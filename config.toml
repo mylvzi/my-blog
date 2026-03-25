@@ -1,10 +1,10 @@
 baseURL = "https://mylvzi.github.io/"
 languageCode = "zh-cn"
-title = "我的博客"
+title = "lvzi's blog"
 theme = "hyde"
 
 [params]
-  description = "这是我的个人博客"
+  description = "Welcome To My Blog"
   author = "作者名"
   github = "your-github"
   twitter = "your-twitter"
