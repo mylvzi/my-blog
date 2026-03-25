@@ -1,5 +1,4 @@
 @echo off
-chcp 65001 > nul
 echo 部署更新到 GitHub Pages...
 
 REM 构建网站

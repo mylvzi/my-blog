@@ -6,7 +6,7 @@ tags: ["hello", "hugo"]
 categories: ["general"]
 ---
 
-这是我的第一篇博客文章，使用 Hugo 静态网站生成器。
+这是lvzi的第一篇博客文章，使用 Hugo 静态网站生成器。
 
 Hugo 是一个用 Go 语言编写的快速、现代的静态网站生成器。
 
