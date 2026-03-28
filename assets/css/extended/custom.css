@@ -1,0 +1,92 @@
+/* 自定义代码高亮样式 */
+.highlight,
+pre.chroma,
+pre code {
+    background-color: #ffffff !important;
+    color: #24292e !important;
+}
+
+/* 行内代码 */
+code:not(pre code) {
+    background-color: #f6f8fa !important;
+    color: #24292e !important;
+    padding: 0.2em 0.4em !important;
+    border-radius: 3px !important;
+}
+
+/* 代码块边框 */
+pre {
+    border: 1px solid #e1e4e8 !important;
+    border-radius: 6px !important;
+    overflow: auto !important;
+}
+
+/* 语法高亮颜色调整 */
+.highlight .chroma .hl,
+pre.chroma .hl {
+    background-color: #fffbdd !important;
+}
+
+/* 确保文字在白色背景上可读 */
+.chroma .ln { color: #6a737d !important; }
+.chroma .k { color: #d73a49 !important; }
+.chroma .kc { color: #005cc5 !important; }
+.chroma .kd { color: #d73a49 !important; }
+.chroma .kn { color: #d73a49 !important; }
+.chroma .kp { color: #d73a49 !important; }
+.chroma .kr { color: #d73a49 !important; }
+.chroma .kt { color: #d73a49 !important; }
+.chroma .n { color: #24292e !important; }
+.chroma .na { color: #6f42c1 !important; }
+.chroma .nb { color: #005cc5 !important; }
+.chroma .nc { color: #6f42c1 !important; }
+.chroma .no { color: #005cc5 !important; }
+.chroma .nd { color: #6f42c1 !important; }
+.chroma .ni { color: #24292e !important; }
+.chroma .ne { color: #d73a49 !important; }
+.chroma .nf { color: #6f42c1 !important; }
+.chroma .nl { color: #005cc5 !important; }
+.chroma .nn { color: #6f42c1 !important; }
+.chroma .nt { color: #22863a !important; }
+.chroma .nv { color: #005cc5 !important; }
+.chroma .s { color: #032f62 !important; }
+.chroma .sa { color: #032f62 !important; }
+.chroma .sb { color: #032f62 !important; }
+.chroma .sc { color: #032f62 !important; }
+.chroma .dl { color: #032f62 !important; }
+.chroma .sd { color: #6a737d !important; }
+.chroma .s2 { color: #032f62 !important; }
+.chroma .se { color: #032f62 !important; }
+.chroma .sh { color: #032f62 !important; }
+.chroma .si { color: #032f62 !important; }
+.chroma .sx { color: #032f62 !important; }
+.chroma .sr { color: #032f62 !important; }
+.chroma .s1 { color: #032f62 !important; }
+.chroma .ss { color: #032f62 !important; }
+.chroma .m { color: #005cc5 !important; }
+.chroma .mb { color: #005cc5 !important; }
+.chroma .mf { color: #005cc5 !important; }
+.chroma .mh { color: #005cc5 !important; }
+.chroma .mi { color: #005cc5 !important; }
+.chroma .il { color: #005cc5 !important; }
+.chroma .mo { color: #005cc5 !important; }
+.chroma .o { color: #d73a49 !important; }
+.chroma .ow { color: #d73a49 !important; }
+.chroma .c { color: #6a737d !important; }
+.chroma .ch { color: #6a737d !important; }
+.chroma .cm { color: #6a737d !important; }
+.chroma .c1 { color: #6a737d !important; }
+.chroma .cs { color: #6a737d !important; }
+.chroma .cp { color: #6a737d !important; }
+.chroma .cpf { color: #6a737d !important; }
+.chroma .g { color: #24292e !important; }
+.chroma .gd { color: #d73a49 !important; background-color: #ffebe9 !important; }
+.chroma .ge { color: #24292e !important; font-style: italic !important; }
+.chroma .gr { color: #d73a49 !important; }
+.chroma .gh { color: #005cc5 !important; }
+.chroma .gi { color: #22863a !important; background-color: #f0fff4 !important; }
+.chroma .go { color: #6a737d !important; }
+.chroma .gp { color: #6a737d !important; }
+.chroma .gs { color: #24292e !important; font-weight: bold !important; }
+.chroma .gu { color: #6f42c1 !important; }
+.chroma .gt { color: #d73a49 !important; }
