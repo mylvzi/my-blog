@@ -1,92 +1,95 @@
-/* 自定义代码高亮样式 */
+/* 代码块样式 - 同时支持亮色和暗色模式 */
+
+/* 亮色模式下的代码块 */
+:root,
+[data-theme="light"] {
+    --code-block-bg: #f6f8fa !important;
+    --code-bg: #f6f8fa !important;
+}
+
+/* 暗色模式下的代码块 */
+[data-theme="dark"] {
+    --code-block-bg: #1e1e1e !important;
+    --code-bg: #2d2d2d !important;
+}
+
+/* 代码块基础样式 */
 .highlight,
 pre.chroma,
 pre code {
-    background-color: #ffffff !important;
-    color: #24292e !important;
+    background-color: var(--code-block-bg) !important;
+    border-radius: 6px !important;
+    padding: 1em !important;
+    overflow: auto !important;
+}
+
+/* 覆盖主题的chroma样式 */
+.chroma {
+    background-color: var(--code-block-bg) !important;
+    color: var(--code-text) !important;
 }
 
 /* 行内代码 */
 code:not(pre code) {
-    background-color: #f6f8fa !important;
-    color: #24292e !important;
+    background-color: var(--code-bg) !important;
     padding: 0.2em 0.4em !important;
     border-radius: 3px !important;
+    font-size: 0.9em !important;
 }
 
-/* 代码块边框 */
-pre {
+/* 确保代码块有边框 */
+.post-content .highlight {
     border: 1px solid #e1e4e8 !important;
-    border-radius: 6px !important;
-    overflow: auto !important;
 }
 
-/* 语法高亮颜色调整 */
-.highlight .chroma .hl,
-pre.chroma .hl {
-    background-color: #fffbdd !important;
+[data-theme="dark"] .post-content .highlight {
+    border: 1px solid #444 !important;
 }
 
-/* 确保文字在白色背景上可读 */
-.chroma .ln { color: #6a737d !important; }
-.chroma .k { color: #d73a49 !important; }
-.chroma .kc { color: #005cc5 !important; }
-.chroma .kd { color: #d73a49 !important; }
-.chroma .kn { color: #d73a49 !important; }
-.chroma .kp { color: #d73a49 !important; }
-.chroma .kr { color: #d73a49 !important; }
-.chroma .kt { color: #d73a49 !important; }
-.chroma .n { color: #24292e !important; }
-.chroma .na { color: #6f42c1 !important; }
-.chroma .nb { color: #005cc5 !important; }
-.chroma .nc { color: #6f42c1 !important; }
-.chroma .no { color: #005cc5 !important; }
-.chroma .nd { color: #6f42c1 !important; }
-.chroma .ni { color: #24292e !important; }
-.chroma .ne { color: #d73a49 !important; }
-.chroma .nf { color: #6f42c1 !important; }
-.chroma .nl { color: #005cc5 !important; }
-.chroma .nn { color: #6f42c1 !important; }
-.chroma .nt { color: #22863a !important; }
-.chroma .nv { color: #005cc5 !important; }
-.chroma .s { color: #032f62 !important; }
-.chroma .sa { color: #032f62 !important; }
-.chroma .sb { color: #032f62 !important; }
-.chroma .sc { color: #032f62 !important; }
-.chroma .dl { color: #032f62 !important; }
-.chroma .sd { color: #6a737d !important; }
-.chroma .s2 { color: #032f62 !important; }
-.chroma .se { color: #032f62 !important; }
-.chroma .sh { color: #032f62 !important; }
-.chroma .si { color: #032f62 !important; }
-.chroma .sx { color: #032f62 !important; }
-.chroma .sr { color: #032f62 !important; }
-.chroma .s1 { color: #032f62 !important; }
-.chroma .ss { color: #032f62 !important; }
-.chroma .m { color: #005cc5 !important; }
-.chroma .mb { color: #005cc5 !important; }
-.chroma .mf { color: #005cc5 !important; }
-.chroma .mh { color: #005cc5 !important; }
-.chroma .mi { color: #005cc5 !important; }
-.chroma .il { color: #005cc5 !important; }
-.chroma .mo { color: #005cc5 !important; }
-.chroma .o { color: #d73a49 !important; }
-.chroma .ow { color: #d73a49 !important; }
-.chroma .c { color: #6a737d !important; }
-.chroma .ch { color: #6a737d !important; }
-.chroma .cm { color: #6a737d !important; }
-.chroma .c1 { color: #6a737d !important; }
-.chroma .cs { color: #6a737d !important; }
-.chroma .cp { color: #6a737d !important; }
-.chroma .cpf { color: #6a737d !important; }
-.chroma .g { color: #24292e !important; }
-.chroma .gd { color: #d73a49 !important; background-color: #ffebe9 !important; }
-.chroma .ge { color: #24292e !important; font-style: italic !important; }
-.chroma .gr { color: #d73a49 !important; }
-.chroma .gh { color: #005cc5 !important; }
-.chroma .gi { color: #22863a !important; background-color: #f0fff4 !important; }
-.chroma .go { color: #6a737d !important; }
-.chroma .gp { color: #6a737d !important; }
-.chroma .gs { color: #24292e !important; font-weight: bold !important; }
-.chroma .gu { color: #6f42c1 !important; }
-.chroma .gt { color: #d73a49 !important; }
+/* 亮色模式下的语法高亮颜色 */
+:root,
+[data-theme="light"] {
+    --code-text: #24292e !important;
+    --code-keyword: #d73a49 !important;
+    --code-string: #032f62 !important;
+    --code-number: #005cc5 !important;
+    --code-comment: #6a737d !important;
+    --code-function: #6f42c1 !important;
+    --code-type: #22863a !important;
+}
+
+/* 暗色模式下的语法高亮颜色 */
+[data-theme="dark"] {
+    --code-text: #e6edf3 !important;
+    --code-keyword: #ff7b72 !important;
+    --code-string: #a5d6ff !important;
+    --code-number: #79c0ff !important;
+    --code-comment: #8b949e !important;
+    --code-function: #d2a8ff !important;
+    --code-type: #7ee787 !important;
+}
+
+/* 应用语法高亮颜色 */
+.highlight,
+pre.chroma {
+    color: var(--code-text) !important;
+}
+
+.chroma .k { color: var(--code-keyword) !important; }
+.chroma .kd { color: var(--code-keyword) !important; }
+.chroma .kn { color: var(--code-keyword) !important; }
+.chroma .kr { color: var(--code-keyword) !important; }
+.chroma .kt { color: var(--code-keyword) !important; }
+.chroma .s { color: var(--code-string) !important; }
+.chroma .s1 { color: var(--code-string) !important; }
+.chroma .s2 { color: var(--code-string) !important; }
+.chroma .m { color: var(--code-number) !important; }
+.chroma .mi { color: var(--code-number) !important; }
+.chroma .mf { color: var(--code-number) !important; }
+.chroma .c { color: var(--code-comment) !important; }
+.chroma .c1 { color: var(--code-comment) !important; }
+.chroma .cm { color: var(--code-comment) !important; }
+.chroma .nf { color: var(--code-function) !important; }
+.chroma .na { color: var(--code-function) !important; }
+.chroma .nc { color: var(--code-type) !important; }
+.chroma .nt { color: var(--code-type) !important; }

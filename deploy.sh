@@ -25,7 +25,7 @@ fi
 git commit -m "$msg"
 
 # 推送到远程仓库
-git push origin master
+git push origin main
 
 # 回到项目根目录
 cd ..
