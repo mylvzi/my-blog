@@ -16,3 +16,6 @@ Thumbs.db
 # Environment
 .env
 *.local
+
+# 备份文件
+*.hyde-backup

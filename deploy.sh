@@ -2,8 +2,14 @@
 
 echo -e "\033[0;32m部署更新到 GitHub Pages...\033[0m"
 
-# 构建网站
-hugo
+# 构建网站（生产环境）
+echo "清理旧构建文件..."
+if [ -d "public" ]; then
+    find public -mindepth 1 -maxdepth 1 ! -name '.git' -exec rm -rf {} +
+fi
+
+echo "构建生产版本..."
+hugo --minify --environment production
 
 # 进入 public 目录
 cd public

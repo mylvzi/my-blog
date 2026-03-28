@@ -17,7 +17,7 @@ categories: []
 ## 关于这个博客
 
 - **技术栈**：使用 Hugo 静态网站生成器
-- **主题**：采用简洁的 Hyde 主题
+- **主题**：采用功能丰富的 PaperMod 主题
 - **部署**：通过 GitHub Pages 免费托管
 - **域名**：https://mylvzi.github.io
 
