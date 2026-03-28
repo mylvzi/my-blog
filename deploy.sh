@@ -14,6 +14,14 @@ hugo --minify --environment production
 # 进入 public 目录
 cd public
 
+# 初始化git仓库如果不存在
+if [ ! -d ".git" ]; then
+    echo "Initializing git repository in public directory..."
+    git init
+    git remote add origin https://github.com/mylvzi/my-blog.git
+    git checkout -b gh-pages
+fi
+
 # 添加更改
 git add .
 
@@ -25,7 +33,7 @@ fi
 git commit -m "$msg"
 
 # 推送到远程仓库
-git push origin main
+git push origin gh-pages --force
 
 # 回到项目根目录
 cd ..
