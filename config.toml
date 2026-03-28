@@ -32,7 +32,7 @@ defaultContentLanguageInSubdir = false
 
   # 搜索功能
   search = true
-  customCSS = ["css/extended/custom.css"]
+  customCSS = ["css/custom.css"]
 
   # 图片相关
   cover.linkFullImages = true
