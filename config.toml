@@ -99,7 +99,7 @@ defaultContentLanguageInSubdir = false
       unsafe = true  # 允许原始HTML
 
   [markup.highlight]
-    style = "dracula"  # Dracula 主题
+    style = "github"  # GitHub风格的浅色主题
 
 # 输出格式
 [outputs]
