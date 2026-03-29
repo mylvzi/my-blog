@@ -23,8 +23,15 @@ git push origin master
 
 cd ..
 
-echo Current dir:
-cd
+echo ========================================
+echo Store The Source Code
+echo ========================================
+
+git add .
+set msg=Update site %date% %time%
+if not "%*"=="" set msg=%*
+git commit -m "%msg%"
+git push origin main
 
 echo ========================================
 echo Done
