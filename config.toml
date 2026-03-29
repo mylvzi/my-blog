@@ -86,7 +86,7 @@ defaultContentLanguageInSubdir = false
       unsafe = true  # 允许原始HTML
 
   [markup.highlight]
-    style = "pygments"  # 代码高亮样式
+    style = "dracula"  # Dracula 主题
 
 # 输出格式
 [outputs]
