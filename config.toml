@@ -33,6 +33,7 @@ defaultContentLanguageInSubdir = false
   # 搜索功能
   search = true
   disableIntegrity = true
+  disableFingerprinting = true
 
 
   # 图片相关
