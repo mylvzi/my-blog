@@ -1,6 +1,6 @@
 @echo off
 echo ========================================
-echo   Deploying to GitHub Pages (gh-pages)
+echo   Deploying to GitHub Pages (master)
 echo ========================================
 
 REM Check if hugo is available
@@ -37,36 +37,36 @@ REM Initialize git repository if not exists
 if not exist ".git" (
     echo Initializing git repository in public directory...
     git init
-    git remote add origin https://github.com/mylvzi/my-blog.git
-    git checkout -b gh-pages
+    git remote add origin https://github.com/mylvzi/mylvzi.github.io.git
+    git checkout -b master
     echo NOTE: New repository initialized, first push may need manual setup
 )
 
-REM Ensure we're on gh-pages branch
-echo Ensuring we're on gh-pages branch...
-git branch --list gh-pages >nul 2>&1
+REM Ensure we're on master branch
+echo Ensuring we're on master branch...
+git branch --list master >nul 2>&1
 if %ERRORLEVEL% equ 0 (
-    REM gh-pages branch exists, check if we're on it
-    git symbolic-ref --short HEAD | findstr "gh-pages" >nul
+    REM master branch exists, check if we're on it
+    git symbolic-ref --short HEAD | findstr "master" >nul
     if %ERRORLEVEL% neq 0 (
-        echo Switching to gh-pages branch...
-        git checkout gh-pages
+        echo Switching to master branch...
+        git checkout master
     )
 ) else (
-    echo Creating gh-pages branch...
-    git checkout -b gh-pages
+    echo Creating master branch...
+    git checkout -b master
 )
 
 REM Check remote URL
 git remote -v | findstr "origin" >nul
 if %ERRORLEVEL% neq 0 (
     echo Setting remote origin...
-    git remote add origin https://github.com/mylvzi/my-blog.git
+    git remote add origin https://github.com/mylvzi/mylvzi.github.io.git
 )
 
 REM Pull latest changes from remote (avoid conflicts)
 echo Pulling latest changes from remote...
-git pull origin gh-pages --rebase --autostash 2>nul
+git pull origin master --rebase --autostash 2>nul
 if %ERRORLEVEL% neq 0 (
     echo No existing remote branch or pull failed, continuing...
 )
@@ -88,11 +88,11 @@ if %ERRORLEVEL% neq 0 (
 )
 
 REM Push to remote repository
-echo Pushing to origin/gh-pages...
-git push origin gh-pages --force
+echo Pushing to origin/master...
+git push origin master --force
 if %ERRORLEVEL% neq 0 (
     echo Push failed, trying with --set-upstream...
-    git push --set-upstream origin gh-pages --force
+    git push --set-upstream origin master --force
 )
 
 REM Return to project root
