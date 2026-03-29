@@ -42,6 +42,21 @@ if not exist ".git" (
     echo NOTE: New repository initialized, first push may need manual setup
 )
 
+REM Ensure we're on gh-pages branch
+echo Ensuring we're on gh-pages branch...
+git branch --list gh-pages >nul 2>&1
+if %ERRORLEVEL% equ 0 (
+    REM gh-pages branch exists, check if we're on it
+    git symbolic-ref --short HEAD | findstr "gh-pages" >nul
+    if %ERRORLEVEL% neq 0 (
+        echo Switching to gh-pages branch...
+        git checkout gh-pages
+    )
+) else (
+    echo Creating gh-pages branch...
+    git checkout -b gh-pages
+)
+
 REM Check remote URL
 git remote -v | findstr "origin" >nul
 if %ERRORLEVEL% neq 0 (
@@ -74,10 +89,10 @@ if %ERRORLEVEL% neq 0 (
 
 REM Push to remote repository
 echo Pushing to origin/gh-pages...
-git push origin gh-pages
+git push origin gh-pages --force
 if %ERRORLEVEL% neq 0 (
     echo Push failed, trying with --set-upstream...
-    git push --set-upstream origin gh-pages
+    git push --set-upstream origin gh-pages --force
 )
 
 REM Return to project root

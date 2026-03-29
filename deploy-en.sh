@@ -39,6 +39,19 @@ if [ ! -d ".git" ]; then
     echo -e "\033[0;33mNOTE: New repository initialized, first push may need manual setup\033[0m"
 fi
 
+# Ensure we're on gh-pages branch
+echo "Ensuring we're on gh-pages branch..."
+if git branch --list gh-pages | grep -q gh-pages; then
+    # gh-pages branch exists, check if we're on it
+    if [ "$(git symbolic-ref --short HEAD)" != "gh-pages" ]; then
+        echo "Switching to gh-pages branch..."
+        git checkout gh-pages
+    fi
+else
+    echo "Creating gh-pages branch..."
+    git checkout -b gh-pages
+fi
+
 # Check remote URL
 if ! git remote | grep -q "origin"; then
     echo "Setting remote origin..."
@@ -71,10 +84,10 @@ fi
 
 # Push to remote repository
 echo "Pushing to origin/gh-pages..."
-git push origin gh-pages
+git push origin gh-pages --force
 if [ $? -ne 0 ]; then
     echo "Push failed, trying with --set-upstream..."
-    git push --set-upstream origin gh-pages
+    git push --set-upstream origin gh-pages --force
 fi
 
 # Return to project root
