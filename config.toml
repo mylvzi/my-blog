@@ -32,6 +32,8 @@ defaultContentLanguageInSubdir = false
 
   # 搜索功能
   search = true
+  disableIntegrity = true
+
 
   # 图片相关
   cover.linkFullImages = true
@@ -40,13 +42,24 @@ defaultContentLanguageInSubdir = false
   listPaginate = 10
 
   # 图标设置
-  favicon = "/favicon.ico"
+  # favicon在[params.assets]部分设置
 
   # 版权信息
   copyright = "© 2025 lvzi. All rights reserved."
 
   # 开启MathJax（如果需要数学公式）
   # math = true
+
+# 资源指纹设置
+[params.assets]
+  disableFingerprinting = true
+  favicon = "/favicon.ico"
+  favicon16x16 = "/favicon-16x16.png"
+  favicon32x32 = "/favicon-32x32.png"
+  apple_touch_icon = "/apple-touch-icon.png"
+  safari_pinned_tab = "/safari-pinned-tab.svg"
+  theme_color = "#2e2e33"
+  msapplication_TileColor = "#2e2e33"
 
 [menu]
   [[menu.main]]
