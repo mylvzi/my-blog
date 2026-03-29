@@ -5,7 +5,7 @@
 }
 
 [data-theme=light] .chroma {
-  color: #24292e !important;
+  color: #000000 !important;
   font-family: 'SF Mono', 'Monaco', 'Inconsolata', 'Fira Code', 'Cascadia Code', 'Consolas', 'Courier New', monospace !important;
   font-size: 15px !important;
   line-height: 1.6 !important;
@@ -13,67 +13,6 @@
   letter-spacing: 0.02em !important;
 }
 
-[data-theme=light] .chroma .k,
-[data-theme=light] .chroma .kd,
-[data-theme=light] .chroma .kn,
-[data-theme=light] .chroma .kp,
-[data-theme=light] .chroma .kr,
-[data-theme=light] .chroma .kt {
-  color: #d73a49 !important; /* 红色关键字 */
-}
-
-[data-theme=light] .chroma .s,
-[data-theme=light] .chroma .sb,
-[data-theme=light] .chroma .sc,
-[data-theme=light] .chroma .s2,
-[data-theme=light] .chroma .sh,
-[data-theme=light] .chroma .sx,
-[data-theme=light] .chroma .sr,
-[data-theme=light] .chroma .s1,
-[data-theme=light] .chroma .ss {
-  color: #032f62 !important; /* 深蓝色字符串 */
-}
-
-[data-theme=light] .chroma .na,
-[data-theme=light] .chroma .nc,
-[data-theme=light] .chroma .no,
-[data-theme=light] .chroma .nd,
-[data-theme=light] .chroma .ni,
-[data-theme=light] .chroma .ne,
-[data-theme=light] .chroma .nf,
-[data-theme=light] .chroma .fm,
-[data-theme=light] .chroma .nl,
-[data-theme=light] .chroma .nn,
-[data-theme=light] .chroma .nx,
-[data-theme=light] .chroma .py,
-[data-theme=light] .chroma .nt {
-  color: #6f42c1 !important; /* 紫色类名/函数名 */
-}
-
-[data-theme=light] .chroma .m,
-[data-theme=light] .chroma .mb,
-[data-theme=light] .chroma .mf,
-[data-theme=light] .chroma .mh,
-[data-theme=light] .chroma .mi,
-[data-theme=light] .chroma .il,
-[data-theme=light] .chroma .mo {
-  color: #005cc5 !important; /* 蓝色数字 */
-}
-
-[data-theme=light] .chroma .c,
-[data-theme=light] .chroma .ch,
-[data-theme=light] .chroma .cm,
-[data-theme=light] .chroma .c1,
-[data-theme=light] .chroma .cs,
-[data-theme=light] .chroma .cp,
-[data-theme=light] .chroma .cpf {
-  color: #6a737d !important; /* 灰色注释 */
-}
-
-[data-theme=light] .chroma .o,
-[data-theme=light] .chroma .ow {
-  color: #005cc5 !important; /* 蓝色操作符 */
-}
 
 [data-theme=light] .post-content .highlight {
   border: 1px solid #e1e4e8 !important;
@@ -84,12 +23,12 @@
 }
 
 [data-theme=dark] {
-  --code-block-bg: #1e1e1e !important;
-  --code-bg: #2d2d2d !important;
+  --code-block-bg: #000000 !important;
+  --code-bg: #000000 !important;
 }
 
 [data-theme=dark] .chroma {
-  color: #e6edf3 !important;
+  color: #ffffff !important;
   font-family: 'SF Mono', 'Monaco', 'Inconsolata', 'Fira Code', 'Cascadia Code', 'Consolas', 'Courier New', monospace !important;
   font-size: 15px !important;
   line-height: 1.6 !important;
