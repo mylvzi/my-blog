@@ -1,0 +1,2 @@
+{{- $url := (resources.Get . | css.Sass (dict "transpiler" "dartsass")).RelPermalink | relURL -}}
+{{- return $url -}}

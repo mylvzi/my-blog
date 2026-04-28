@@ -4,6 +4,7 @@ date: 2026-03-25T12:00:00+08:00
 draft: false
 tags: ["hello", "hugo"]
 categories: ["general"]
+summary: "我的第一篇 Hugo 博客文章。"
 ---
 
 这是lvzi的第一篇博客文章，使用 Hugo 静态网站生成器。

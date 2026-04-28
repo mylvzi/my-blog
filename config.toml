@@ -1,116 +1,93 @@
 baseURL = "https://mylvzi.github.io/"
 languageCode = "zh-cn"
-title = "lvzi's blog"
-theme = "PaperMod"
-
-# 多语言支持（如果需要）
 defaultContentLanguage = "zh-cn"
-defaultContentLanguageInSubdir = false
+title = "lvzi's blog"
+theme = "hugo-stellar"
 
-[params]
-  # 基本设置
-  description = "Welcome To My Blog"
-  author = "lvzi"
+paginate = 10
+buildFuture = true
+relativeURLs = false
 
-  # 主题设置
-  defaultTheme = "auto"  # auto, light, dark
-  disableSpecial1stPost = true
-  homeInfoMode = "PostList"  # 首页显示文章列表
+[permalinks]
+  posts = "/posts/:slug/"
 
-  # 社交链接
-  github = "mylvzi"
-  twitter = "your-twitter"
-
-  # 功能设置
-  ShowReadingTime = true
-  ShowShareButtons = true
-  ShowCodeCopyButtons = true
-
-  # 评论系统（可选）
-  # comments = true
-  # disqusShortname = ""
-
-  # 搜索功能
-  search = true
-  disableIntegrity = true
-  disableFingerprinting = true
-
-
-  # 图片相关
-  cover.linkFullImages = true
-
-  # 文章列表设置
-  listPaginate = 10
-
-  # 图标设置
-  # favicon在[params.assets]部分设置
-
-  # 版权信息
-  copyright = "© 2025 lvzi. All rights reserved."
-
-  # 开启MathJax（如果需要数学公式）
-  # math = true
-
-# 资源指纹设置
-[params.assets]
-  disableFingerprinting = true
-  favicon = "/favicon.ico"
-  favicon16x16 = "/favicon-16x16.png"
-  favicon32x32 = "/favicon-32x32.png"
-  apple_touch_icon = "/apple-touch-icon.png"
-  safari_pinned_tab = "/safari-pinned-tab.svg"
-  theme_color = "#2e2e33"
-  msapplication_TileColor = "#2e2e33"
-
-[menu]
-  [[menu.main]]
-    identifier = "posts"
-    name = "文章"
-    url = "/posts/"
-    weight = 1
-
-  [[menu.main]]
-    identifier = "archives"
-    name = "归档"
-    url = "/archives/"
-    weight = 2
-
-  [[menu.main]]
-    identifier = "search"
-    name = "搜索"
-    url = "/search/"
-    weight = 3
-
-  [[menu.main]]
-    identifier = "about"
-    name = "关于"
-    url = "/about/"
-    weight = 4
-
-# 分类和标签
 [taxonomies]
   category = "categories"
   tag = "tags"
 
-# Markdown处理
-[markup]
-  [markup.goldmark]
-    [markup.goldmark.renderer]
-      unsafe = true  # 允许原始HTML
-
-  [markup.highlight]
-    style = "github"  # GitHub风格的浅色主题
-
-# 输出格式
 [outputs]
   home = ["HTML", "RSS", "JSON"]
 
-# 服务设置
-[services]
-  [services.googleAnalytics]
-    # 如果需要Google Analytics，取消注释并填入ID
-    # id = "UA-XXXXX-X"
+[params]
+  author = "lvzi"
+  avatar = "/photos/刘堃现场.jpeg"
+  logo = "/favicon-32x32.png"
+  copyright = "© 2026 lvzi. All rights reserved."
 
-# 分页设置
-[pagination]
-  pagerSize = 10
+  description = [
+    "记录技术、思考与生活。",
+    "A clean blog about code and ideas."
+  ]
+
+  notice = [
+    "欢迎来到我的博客。",
+    "持续更新算法与工程实践。"
+  ]
+
+  [[params.social]]
+    name = "GitHub"
+    url = "https://github.com/mylvzi"
+    logo = "/social/github.svg"
+
+  [[params.social]]
+    name = "Blog"
+    url = "https://mylvzi.github.io/"
+    logo = "/favicon-32x32.png"
+
+[menus]
+  [[menus.main]]
+    name = "博客"
+    weight = 1
+    url = "/"
+
+    [[menus.main.params.tabs]]
+      name = "所有文章"
+      url = "/"
+
+    [[menus.main.params.tabs]]
+      name = "分类"
+      url = "/categories/"
+
+    [[menus.main.params.tabs]]
+      name = "标签"
+      url = "/tags/"
+
+    [[menus.main.params.tabs]]
+      name = "归档"
+      url = "/archives/"
+
+  [[menus.main]]
+    name = "搜索"
+    weight = 2
+    url = "/search/"
+
+    [[menus.main.params.tabs]]
+      name = "站内搜索"
+      url = "/search/?sec=posts"
+
+  [[menus.main]]
+    name = "关于"
+    weight = 3
+    url = "/about/"
+
+    [[menus.main.params.tabs]]
+      name = "关于我"
+      url = "/about/"
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
+
+  [markup.highlight]
+    style = "github"

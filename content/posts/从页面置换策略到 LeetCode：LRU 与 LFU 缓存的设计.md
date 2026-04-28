@@ -1,8 +1,10 @@
 ---
-theme: aurora-glass
-themeName: "极光玻璃"
 title: "从页面置换策略到 LeetCode：LRU 与 LFU 缓存的设计"
 date: 2026-04-27
+draft: false
+tags: ["algorithm", "os", "cache", "leetcode"]
+categories: ["技术"]
+summary: "从操作系统页面置换切入，系统梳理 LRU 与 LFU 的设计思路与实现细节。"
 ---
 
 今天翻到《操作系统导论》（Operating Systems: Three Easy Pieces）里讲页面置换的那一章，忽然觉得书上的理论与 LeetCode 上的题目产生了奇妙的联结。虚拟内存管理中的“该换出哪一页”，和工程中随处可见的缓存淘汰策略，本质上在问同一个问题：**如何用有限的空间，接住未来无限且不可预知的访问序列？** 有没有想到 CPU 调度算法的 MLFQ?
