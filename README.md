@@ -1,12 +1,27 @@
 
-## Hank's Blog 
-[![CI](https://github.com/zhaohongxuan/zhaohongxuan.github.io/actions/workflows/deploy.yml/badge.svg)](https://github.com/zhaohongxuan/zhaohongxuan.github.io/actions/workflows/deploy.yml)
-[![pages-build-deployment](https://github.com/zhaohongxuan/zhaohongxuan.github.io/actions/workflows/pages/pages-build-deployment/badge.svg)](https://github.com/zhaohongxuan/zhaohongxuan.github.io/actions/workflows/pages/pages-build-deployment)
+## Lvzi' s Blog
 
-[Hank's Blog](https://zhaohongxuan.github.io) is a based github page blog powered by [Hexo](https://github.com/hexojs/hexo), and hexo is a fast, simple & powerful blog framework, powered by Node.js.
+个人博客源码仓库，基于 [Hexo](https://github.com/hexojs/hexo) 和 [hexo-theme-stellar](https://github.com/xaoxuu/hexo-theme-stellar) 构建。
 
-The Blog theme is [hexo-theme-next](https://github.com/theme-next/hexo-theme-next).
+### 本地开发
 
-In the repository `src` branch is the `blog source` branch which contains all hexo config file and markdown files, and the master branch is the `github page` branch.
+```bash
+npm install
+npm run start
+```
 
-Once there is any change in `src` branch will trigger the CI action and re-generate the whole blog site in.
+### 构建
+
+```bash
+npm run build
+```
+
+### 部署
+
+仓库根目录提供 `deploy.bat`：
+
+```bat
+deploy.bat
+```
+
+脚本会先构建站点，再提交源码仓库 `main` 分支，由 GitHub Actions 自动发布到 `mylvzi.github.io`。
