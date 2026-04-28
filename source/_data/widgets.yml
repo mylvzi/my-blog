@@ -1,0 +1,17 @@
+welcome:
+  layout: markdown
+  linklist: # 与 linklist 组件写法相同
+    columns: 4
+    items:
+      - icon: '<i class="fa-brands fa-github"></i>'
+        url:  https://github.com/zhaohongxuan
+      - icon: '<i class="fa-brands fa-x-twitter"></i>'
+        url: https://x.com/hank_zhao
+      - icon: '<i class="fa-solid fa-person-running"></i>'
+        url: '/workouts'
+      - icon: '<i class="fa-solid fa-square-rss"></i>'
+        url: /atom.xml
+  content: | 
+    老家洛阳，现居上海；
+    喜欢跑步，跑步是习惯和日常；
+    喜欢读书，偏爱历史、哲学多一点；

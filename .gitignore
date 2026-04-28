@@ -1,21 +1,10 @@
-# Hugo
-public/
-resources/_gen/
-.hugo_build.lock
-
-# OS
 .DS_Store
 Thumbs.db
-
-# IDE
-.vscode/
-.idea/
-*.swp
-*.swo
-
-# Environment
-.env
-*.local
-
-# 备份文件
-*.hyde-backup
+db.json
+*.log
+node_modules/
+public/
+.deploy*/
+.idea
+.ffs_db
+package-lock.json
