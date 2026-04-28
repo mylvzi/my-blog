@@ -24,11 +24,12 @@ jobs:
           version: ${{ matrix.node_version }}
       - name: Setup hexo
         env:
-          HEXO_DEPLOY_PRI: ${{ secrets.HEXO_DEPLOY_PRI }}
+          HEXO_DEPLOY_PRI_B64: ${{ secrets.HEXO_DEPLOY_PRI_B64 }}
         run: |
           mkdir -p ~/.ssh/
-          printf '%s\n' "$HEXO_DEPLOY_PRI" | tr -d '\r' > ~/.ssh/id_ed25519
+          printf '%s' "$HEXO_DEPLOY_PRI_B64" | base64 -d > ~/.ssh/id_ed25519
           chmod 600 ~/.ssh/id_ed25519
+          ssh-keygen -y -f ~/.ssh/id_ed25519 > /dev/null
           ssh-keyscan github.com >> ~/.ssh/known_hosts
           cat > ~/.ssh/config <<'EOF'
           Host github.com
