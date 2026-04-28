@@ -1,0 +1,27 @@
+<svg width="1600" height="900" viewBox="0 0 1600 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1600" height="900" rx="36" fill="#F4EFE8"/>
+  <rect x="72" y="72" width="1456" height="756" rx="28" fill="#FCFAF7" stroke="#D8CCBE" stroke-width="4"/>
+  <rect x="72" y="72" width="1456" height="64" rx="28" fill="#E8DED1"/>
+  <circle cx="128" cy="104" r="10" fill="#C17C74"/>
+  <circle cx="160" cy="104" r="10" fill="#D9A96A"/>
+  <circle cx="192" cy="104" r="10" fill="#8EAA8A"/>
+  <rect x="120" y="188" width="300" height="520" rx="22" fill="#11243A"/>
+  <circle cx="270" cy="330" r="96" fill="#223B56"/>
+  <rect x="188" y="462" width="164" height="18" rx="9" fill="#7E97AF"/>
+  <rect x="170" y="498" width="200" height="14" rx="7" fill="#4A6480"/>
+  <rect x="468" y="188" width="932" height="66" rx="20" fill="#E9D9C6"/>
+  <rect x="468" y="286" width="932" height="184" rx="24" fill="#F4E6D8"/>
+  <rect x="500" y="324" width="430" height="24" rx="12" fill="#6B4C37"/>
+  <rect x="500" y="366" width="620" height="14" rx="7" fill="#A6876D"/>
+  <rect x="500" y="396" width="560" height="14" rx="7" fill="#A6876D"/>
+  <rect x="468" y="506" width="446" height="168" rx="24" fill="#18344F"/>
+  <rect x="954" y="506" width="446" height="168" rx="24" fill="#233F2C"/>
+  <rect x="500" y="544" width="214" height="18" rx="9" fill="#C6D3E0"/>
+  <rect x="500" y="578" width="298" height="12" rx="6" fill="#849BB3"/>
+  <rect x="986" y="544" width="214" height="18" rx="9" fill="#D9E5D2"/>
+  <rect x="986" y="578" width="298" height="12" rx="6" fill="#9CB08E"/>
+  <text x="500" y="232" fill="#4B3627" font-size="34" font-family="Segoe UI, Arial, sans-serif">Lvzi's Blog</text>
+  <text x="500" y="340" fill="#3E2D20" font-size="44" font-family="Segoe UI, Arial, sans-serif">Personal Blog Project</text>
+  <text x="500" y="642" fill="#F5F8FB" font-size="32" font-family="Segoe UI, Arial, sans-serif">Theme Customization</text>
+  <text x="986" y="642" fill="#F5F8FB" font-size="32" font-family="Segoe UI, Arial, sans-serif">Auto Deployment</text>
+</svg>
