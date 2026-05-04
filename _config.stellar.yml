@@ -8,6 +8,11 @@ inject:
     - <link rel="shortcut icon" href="/favicon.ico">
     - <meta name="theme-color" content="#f8f8f8">
     - <link href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.4.2/css/all.css" rel="stylesheet">
+    - <link rel="stylesheet" href="/css/theme-toggle.css">
+    - >-
+      <script>(function(){var key='stellar-theme-preference';var root=document.documentElement;var stored=localStorage.getItem(key);var systemDark=window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches;var theme=stored==='light'||stored==='dark'?stored:(systemDark?'dark':'light');root.setAttribute('data-theme',theme);root.style.colorScheme=theme;})();</script>
+  script:
+    - <script src="/js/theme-toggle.js" defer></script>
 
 
 site_tree:
@@ -15,6 +20,8 @@ site_tree:
     sidebar: starter, welcome, recent
   index_blog:
     sidebar: starter, welcome, recent
+    nav_tabs:
+      About me: /about/
   index_archive:
     menu_id: archives
   topic:
