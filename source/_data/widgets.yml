@@ -13,4 +13,6 @@ welcome:
         icon: '<i class="fa-solid fa-square-rss"></i>'
         url: /atom.xml
   content: | 
-    JLU本科-QA-From 河南郑州-目前在北京工作
+    JLU本科<br>
+    QA · From 河南郑州<br>
+    目前在北京工作
