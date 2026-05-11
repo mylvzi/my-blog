@@ -21,7 +21,7 @@ site_tree:
   index_blog:
     sidebar: starter, welcome, recent
     nav_tabs:
-      About me: /about/
+      关于我: /about/
   index_archive:
     menu_id: archives
   topic:
