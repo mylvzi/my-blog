@@ -21,7 +21,7 @@
           name: '歌曲名',
           artist: '歌手',
           url: '/music/song.mp3',
-          cover: '/music/cover.jpg'
+          cover: '/images/avatar.png'
         }
       ]
     });
