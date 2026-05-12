@@ -7,6 +7,8 @@
     var existing = document.getElementById('aplayer');
     var container = existing || document.createElement('div');
     container.id = 'aplayer';
+    container.setAttribute('data-music-tip', '我最喜欢的音乐:晚风');
+    container.setAttribute('title', '我最喜欢的音乐:晚风');
 
     if (!existing) {
       document.body.appendChild(container);

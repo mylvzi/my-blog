@@ -541,17 +541,52 @@ html[data-theme="dark"] .learning-track {
 }
 
 .aplayer.aplayer-fixed {
+  right: 0 !important;
+  left: auto !important;
   z-index: 110;
   color: var(--blog-ink, #172033);
   font-family: "Helvetica Neue", Helvetica, Arial, system-ui, "Microsoft Yahei", "Segoe UI", -apple-system, Roboto, Ubuntu, sans-serif;
 }
 
 .aplayer.aplayer-fixed .aplayer-body {
+  right: 0 !important;
+  left: auto !important;
+  transform: translateX(0) !important;
   border: 1px solid rgba(47, 111, 221, 0.12);
   background: rgba(255, 255, 255, 0.9);
   box-shadow: 0 14px 34px rgba(15, 23, 42, 0.12);
   backdrop-filter: blur(16px) saturate(130%);
   -webkit-backdrop-filter: blur(16px) saturate(130%);
+}
+
+.aplayer.aplayer-fixed .aplayer-miniswitcher {
+  display: none !important;
+}
+
+.aplayer.aplayer-fixed::before {
+  position: fixed;
+  right: 16px;
+  bottom: 74px;
+  z-index: 111;
+  padding: 7px 10px;
+  border: 1px solid rgba(47, 111, 221, 0.14);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.92);
+  box-shadow: 0 10px 26px rgba(15, 23, 42, 0.12);
+  color: var(--blog-ink, #172033);
+  content: attr(data-music-tip);
+  font-size: 13px;
+  line-height: 1;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(6px);
+  transition: opacity 0.18s ease, transform 0.18s ease;
+  white-space: nowrap;
+}
+
+.aplayer.aplayer-fixed:hover::before {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .aplayer .aplayer-info .aplayer-music .aplayer-title,
@@ -581,6 +616,13 @@ html[data-theme="dark"] .aplayer.aplayer-fixed .aplayer-body {
   box-shadow: 0 18px 48px rgba(0, 0, 0, 0.34);
 }
 
+html[data-theme="dark"] .aplayer.aplayer-fixed::before {
+  border-color: rgba(255, 255, 255, 0.08);
+  background: rgba(16, 24, 38, 0.92);
+  box-shadow: 0 18px 48px rgba(0, 0, 0, 0.32);
+  color: #ecf4ff;
+}
+
 html[data-theme="dark"] .aplayer .aplayer-info .aplayer-controller .aplayer-time,
 html[data-theme="dark"] .aplayer .aplayer-info .aplayer-controller .aplayer-time .aplayer-icon path {
   color: rgba(236, 244, 255, 0.68);
@@ -591,5 +633,13 @@ html[data-theme="dark"] .aplayer .aplayer-info .aplayer-controller .aplayer-time
   .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body,
   .aplayer.aplayer-fixed .aplayer-body {
     max-width: calc(100vw - 88px);
+  }
+
+  .aplayer.aplayer-fixed::before {
+    right: 12px;
+    bottom: 68px;
+    max-width: calc(100vw - 24px);
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 }
