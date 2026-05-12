@@ -539,3 +539,57 @@ html[data-theme="dark"] .learning-track {
   border-color: rgba(255, 255, 255, 0.07);
   background: rgba(255, 255, 255, 0.04);
 }
+
+.aplayer.aplayer-fixed {
+  z-index: 110;
+  color: var(--blog-ink, #172033);
+  font-family: "Helvetica Neue", Helvetica, Arial, system-ui, "Microsoft Yahei", "Segoe UI", -apple-system, Roboto, Ubuntu, sans-serif;
+}
+
+.aplayer.aplayer-fixed .aplayer-body {
+  border: 1px solid rgba(47, 111, 221, 0.12);
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 14px 34px rgba(15, 23, 42, 0.12);
+  backdrop-filter: blur(16px) saturate(130%);
+  -webkit-backdrop-filter: blur(16px) saturate(130%);
+}
+
+.aplayer .aplayer-info .aplayer-music .aplayer-title,
+.aplayer .aplayer-info .aplayer-music .aplayer-author {
+  color: inherit;
+}
+
+.aplayer .aplayer-bar .aplayer-played {
+  background: var(--blog-accent, #2f6fdd) !important;
+}
+
+.aplayer .aplayer-bar .aplayer-played .aplayer-thumb {
+  background: var(--blog-accent, #2f6fdd) !important;
+}
+
+.aplayer.aplayer-fixed .aplayer-lrc {
+  text-shadow: none;
+}
+
+html[data-theme="dark"] .aplayer.aplayer-fixed {
+  color: #ecf4ff;
+}
+
+html[data-theme="dark"] .aplayer.aplayer-fixed .aplayer-body {
+  border-color: rgba(255, 255, 255, 0.08);
+  background: rgba(16, 24, 38, 0.9);
+  box-shadow: 0 18px 48px rgba(0, 0, 0, 0.34);
+}
+
+html[data-theme="dark"] .aplayer .aplayer-info .aplayer-controller .aplayer-time,
+html[data-theme="dark"] .aplayer .aplayer-info .aplayer-controller .aplayer-time .aplayer-icon path {
+  color: rgba(236, 244, 255, 0.68);
+  fill: rgba(236, 244, 255, 0.68);
+}
+
+@media screen and (max-width: 768px) {
+  .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body,
+  .aplayer.aplayer-fixed .aplayer-body {
+    max-width: calc(100vw - 88px);
+  }
+}
