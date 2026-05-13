@@ -1,6 +1,6 @@
 ---
 title: "PowerShell 7 中文用户名下的 Oh My Posh 血泪修复记"
-date: 2026-05-13 17:08:38
+date: 2026-05-13 17:15:02
 tags:
   - "技术"
 categories:

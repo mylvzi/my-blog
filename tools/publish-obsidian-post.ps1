@@ -145,6 +145,7 @@ function Assert-NoBrokenImageRefs([string]$PostPath) {
 $repoRoot = (Resolve-Path -LiteralPath (Join-Path $PSScriptRoot "..")).Path
 $postsDir = Join-Path $repoRoot "source\_posts"
 $importScript = "C:\Users\绿字\.codex\skills\csdn-hexo-import\scripts\import_csdn_md.py"
+$deployScript = Join-Path $repoRoot "deploy.bat"
 
 $sourcePath = Resolve-RequiredPath $InputPath "Obsidian Markdown 文件"
 if ($AssetsDir) {
@@ -152,6 +153,7 @@ if ($AssetsDir) {
 }
 Resolve-RequiredPath $postsDir "Hexo 文章目录" | Out-Null
 Resolve-RequiredPath $importScript "图片导入脚本" | Out-Null
+Resolve-RequiredPath $deployScript "部署脚本" | Out-Null
 
 if (-not $Date) {
   $Date = Get-Date -Format "yyyy-MM-dd HH:mm:ss"
@@ -216,24 +218,10 @@ try {
   }
 
   if (-not $NoDeploy) {
-    git add -A
+    $deployMessage = "Publish Obsidian post: $title"
+    cmd /c "echo. | `"$deployScript`" `"$deployMessage`""
     if ($LASTEXITCODE -ne 0) {
-      throw "git add 失败"
-    }
-
-    git diff --cached --quiet
-    if ($LASTEXITCODE -eq 0) {
-      Write-Host "没有本地变更需要提交。"
-    } else {
-      git commit -m "Publish Obsidian post: $title"
-      if ($LASTEXITCODE -ne 0) {
-        throw "git commit 失败"
-      }
-    }
-
-    git push origin main
-    if ($LASTEXITCODE -ne 0) {
-      throw "git push 失败"
+      throw "deploy.bat 执行失败"
     }
   }
 } finally {
@@ -249,5 +237,5 @@ Write-Host "Slug: $Slug"
 if ($NoDeploy) {
   Write-Host "部署: 已跳过 (-NoDeploy)"
 } else {
-  Write-Host "部署: 已提交并推送到 origin/main"
+  Write-Host "部署: 已执行 deploy.bat"
 }
