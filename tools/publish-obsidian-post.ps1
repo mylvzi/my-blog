@@ -218,8 +218,7 @@ try {
   }
 
   if (-not $NoDeploy) {
-    $deployMessage = "Publish Obsidian post: $title"
-    cmd /c "echo. | `"$deployScript`" `"$deployMessage`""
+    cmd /c "echo. | call `"$deployScript`""
     if ($LASTEXITCODE -ne 0) {
       throw "deploy.bat 执行失败"
     }
