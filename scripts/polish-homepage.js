@@ -81,35 +81,6 @@ function hasCodeSample(post) {
   return raw.includes('```') || raw.includes('<pre') || raw.includes('<figure class="highlight"');
 }
 
-function learningPathHtml() {
-  return `
-<section class="learning-path">
-  <div class="learning-path__header">
-    <span class="learning-path__eyebrow">推荐阅读路径</span>
-    <h2>从算法直觉到系统策略</h2>
-    <p>按主题顺序阅读，比单纯追最新文章更容易把知识串起来。</p>
-  </div>
-  <div class="learning-path__tracks">
-    <div class="learning-track">
-      <span class="learning-track__title">算法入门</span>
-      <a href="/2026/03/30/binary-search-boundaries/">二分查找</a>
-      <span class="learning-track__arrow">→</span>
-      <a href="/2026/04/28/2026-4-28-preFixSum/">前缀和</a>
-      <span class="learning-track__arrow">→</span>
-      <a href="/2026/04/29/recursion-intuition/">递归</a>
-    </div>
-    <div class="learning-track">
-      <span class="learning-track__title">系统与工程</span>
-      <a href="/2026/04/27/lru-lfu-cache-design/">页面置换</a>
-      <span class="learning-track__arrow">→</span>
-      <a href="/2026/04/27/lru-lfu-cache-design/">LRU / LFU</a>
-      <span class="learning-track__arrow">→</span>
-      <span>缓存设计</span>
-    </div>
-  </div>
-</section>`;
-}
-
 function isHomeHtml(html, data) {
   const outputPath = data && String(data.path || data.route || '');
   if (outputPath && outputPath.replace(/\\/g, '/') !== 'index.html') {
@@ -130,10 +101,6 @@ hexo.extend.filter.register('after_render:html', function(html, data) {
   const $ = cheerio.load(html, {
     decodeEntities: false
   });
-
-  if ($('.learning-path').length === 0) {
-    $('.navbar.top').first().after(learningPathHtml());
-  }
 
   $('.post-list.post > a.post-card.post').each((_, card) => {
     const $card = $(card);
