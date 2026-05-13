@@ -3,11 +3,17 @@
 const cheerio = require('cheerio');
 
 function normalizeHref(href) {
-  const clean = String(href || '')
+  const raw = String(href || '')
     .replace(/^https?:\/\/[^/]+/i, '')
     .split('#')[0]
     .split('?')[0]
     .replace(/index\.html$/i, '');
+  let clean = raw;
+  try {
+    clean = decodeURIComponent(raw);
+  } catch (error) {
+    clean = raw;
+  }
   const withLeadingSlash = '/' + clean.replace(/^\/+/, '');
   return withLeadingSlash.replace(/\/?$/, '/');
 }
@@ -35,6 +41,9 @@ function slugName(name) {
 
 function inferTopic(title, tags) {
   const text = String(title || '').toLowerCase();
+  if (text.includes('codex') || text.includes('ppt') || tags.includes('Codex') || tags.includes('PPT')) {
+    return 'AI 工具 / PPT';
+  }
   if (text.includes('lru') || text.includes('lfu') || tags.includes('os') || tags.includes('cache')) {
     return '系统 / 缓存策略';
   }
@@ -47,6 +56,7 @@ function inferTopic(title, tags) {
 
 function inferClass(title, tags) {
   const text = String(title || '').toLowerCase();
+  if (text.includes('codex') || text.includes('ppt') || tags.includes('Codex') || tags.includes('PPT')) return 'tag-technical';
   if (text.includes('lru') || text.includes('lfu') || tags.includes('cache')) return 'tag-cache';
   if (text.includes('二分') || tags.includes('binary-search')) return 'tag-binary-search';
   if (text.includes('前缀') || tags.includes('prefix-sum')) return 'tag-prefix-sum';
