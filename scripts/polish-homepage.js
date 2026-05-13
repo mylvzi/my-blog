@@ -76,11 +76,6 @@ function readingMinutes(post) {
   return Math.max(1, Math.ceil(raw.replace(/\s+/g, '').length / 500));
 }
 
-function hasCodeSample(post) {
-  const raw = String(post.raw || post._content || post.content || '');
-  return raw.includes('```') || raw.includes('<pre') || raw.includes('<figure class="highlight"');
-}
-
 function isHomeHtml(html, data) {
   const outputPath = data && String(data.path || data.route || '');
   if (outputPath && outputPath.replace(/\\/g, '/') !== 'index.html') {
@@ -132,9 +127,8 @@ hexo.extend.filter.register('after_render:html', function(html, data) {
 
     const $meta = $article.find('.meta.cap').first();
     if ($meta.length > 0 && $meta.find('.reading-meta').length === 0) {
-      const suffix = hasCodeSample(post) ? ' · 含代码示例' : '';
       $('<span class="cap reading-meta"></span>')
-        .text(`约 ${readingMinutes(post)} 分钟阅读 · 适合初学者${suffix}`)
+        .text(`约 ${readingMinutes(post)} 分钟阅读`)
         .appendTo($meta);
     }
   });
