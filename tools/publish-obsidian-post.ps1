@@ -84,9 +84,16 @@ function Get-Summary([string]$Text) {
 
 function Format-YamlList([string[]]$Items) {
   if (-not $Items -or $Items.Count -eq 0) {
-    return "  - notes"
+    return '  - "notes"'
   }
-  return (($Items | Where-Object { $_ } | ForEach-Object { "  - $_" }) -join "`n")
+  return (($Items | Where-Object { $_ } | ForEach-Object { '  - "' + (ConvertTo-YamlDoubleQuoted $_) + '"' }) -join "`n")
+}
+
+function ConvertTo-YamlDoubleQuoted([string]$Value) {
+  if ($null -eq $Value) {
+    return ""
+  }
+  return $Value.Replace("\", "\\").Replace('"', '\"').Replace("`r", " ").Replace("`n", " ")
 }
 
 function Normalize-Tags([string[]]$Items) {
@@ -103,16 +110,16 @@ function Normalize-Tags([string[]]$Items) {
 function Set-FrontMatter([string]$Text, [string]$Title, [string]$PostDate, [string[]]$PostTags, [string]$PostCategory, [string]$Summary) {
   $body = Remove-FrontMatter $Text
   $tagYaml = Format-YamlList $PostTags
-  $frontMatter = @"
+$frontMatter = @"
 ---
-title: $Title
+title: "$(ConvertTo-YamlDoubleQuoted $Title)"
 date: $PostDate
 tags:
 $tagYaml
 categories:
-  - $PostCategory
+  - "$(ConvertTo-YamlDoubleQuoted $PostCategory)"
 comment: true
-summary: $Summary
+summary: "$(ConvertTo-YamlDoubleQuoted $Summary)"
 ---
 
 "@
@@ -123,7 +130,13 @@ function Assert-NoBrokenImageRefs([string]$PostPath) {
   $content = Get-Content -LiteralPath $PostPath -Raw -Encoding UTF8
   $broken = @()
   if ($content -match "!\[\[") { $broken += "Obsidian 图片语法 ![[...]]" }
-  if ($content -match "C:\\Users|Desktop\\|lsq_learn") { $broken += "本机路径" }
+  $localImageMatches = [regex]::Matches($content, '!\[[^\]]*\]\(([^)]+)\)')
+  foreach ($match in $localImageMatches) {
+    $imagePath = $match.Groups[1].Value.Trim()
+    if ($imagePath -match '^[A-Za-z]:\\|C:\\Users|Desktop\\') {
+      $broken += "图片本机路径: $imagePath"
+    }
+  }
   if ($broken.Count -gt 0) {
     throw "文章仍包含未处理引用: $($broken -join ', ')"
   }
@@ -182,8 +195,11 @@ Assert-NoBrokenImageRefs $postPath
 
 Push-Location $repoRoot
 try {
-  npm run build
-  if ($LASTEXITCODE -ne 0) {
+  $buildOutput = & npm run build 2>&1
+  $buildExitCode = $LASTEXITCODE
+  $buildOutput | ForEach-Object { Write-Host $_ }
+  $buildText = $buildOutput -join "`n"
+  if ($buildExitCode -ne 0 -or $buildText -match "ERROR|YAMLException|Process failed|Script load failed") {
     throw "Hexo 构建失败"
   }
 
