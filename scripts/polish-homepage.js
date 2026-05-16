@@ -108,29 +108,6 @@ hexo.extend.filter.register('after_render:html', function(html, data) {
     decodeEntities: false
   });
 
-  if ($('.blog-hero').length === 0) {
-    const hero = [
-      '<section class="blog-hero" aria-label="博客介绍">',
-      '  <div class="blog-hero__copy">',
-      '    <p class="blog-hero__kicker">JLU · GIS · Algorithm · Engineering</p>',
-      '    <h1>Lǚzi\'s Blog</h1>',
-      '    <p>记录算法、系统、工程与思考，把复杂问题拆成可以复盘的路径。</p>',
-      '    <div class="blog-hero__stats" aria-label="博客方向">',
-      '      <span><strong>算法</strong>边界与套路</span>',
-      '      <span><strong>系统</strong>缓存与 OS</span>',
-      '      <span><strong>工程</strong>工具与自动化</span>',
-      '    </div>',
-      '  </div>',
-      '  <div class="blog-hero__visual" aria-hidden="true">',
-      '    <span class="hero-node hero-node-a"></span>',
-      '    <span class="hero-node hero-node-b"></span>',
-      '    <span class="hero-node hero-node-c"></span>',
-      '  </div>',
-      '</section>'
-    ].join('');
-    $('.post-list.post').first().before(hero);
-  }
-
   $('.post-list.post > a.post-card.post').each((_, card) => {
     const $card = $(card);
     const post = postsByHref.get(normalizeHref($card.attr('href')));
