@@ -51,10 +51,23 @@ if errorlevel 1 (
     echo No local changes to commit.
 )
 
-git push origin main || (
-    echo Git push failed.
-    pause
-    exit /b 1
+git push origin main
+if errorlevel 1 (
+    echo Direct Git push failed.
+    echo Checking local proxy http://127.0.0.1:7897 ...
+    powershell -NoProfile -Command "if (Get-NetTCPConnection -LocalPort 7897 -State Listen -ErrorAction SilentlyContinue) { exit 0 } else { exit 1 }"
+    if errorlevel 1 (
+        echo Git push failed, and local proxy 7897 is not available.
+        pause
+        exit /b 1
+    )
+
+    echo Retrying Git push via http://127.0.0.1:7897 ...
+    git -c http.proxy=http://127.0.0.1:7897 push origin main || (
+        echo Git push failed via local proxy.
+        pause
+        exit /b 1
+    )
 )
 
 echo ========================================
