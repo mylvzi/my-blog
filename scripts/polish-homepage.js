@@ -54,6 +54,17 @@ function inferTopic(title, tags) {
   return '技术 / 学习笔记';
 }
 
+function inferIcon(title, tags) {
+  const text = String(title || '').toLowerCase();
+  if (text.includes('codex') || text.includes('ppt') || tags.includes('Codex') || tags.includes('PPT')) return 'fa-wand-magic-sparkles';
+  if (text.includes('lru') || text.includes('lfu') || tags.includes('cache')) return 'fa-memory';
+  if (text.includes('二分') || tags.includes('binary-search')) return 'fa-code-branch';
+  if (text.includes('前缀') || tags.includes('prefix-sum')) return 'fa-table-cells';
+  if (text.includes('递归') || tags.includes('recursion')) return 'fa-diagram-project';
+  if (tags.includes('os')) return 'fa-microchip';
+  return 'fa-pen-nib';
+}
+
 function inferClass(title, tags) {
   const text = String(title || '').toLowerCase();
   if (text.includes('codex') || text.includes('ppt') || tags.includes('Codex') || tags.includes('PPT')) return 'tag-technical';
@@ -97,6 +108,29 @@ hexo.extend.filter.register('after_render:html', function(html, data) {
     decodeEntities: false
   });
 
+  if ($('.blog-hero').length === 0) {
+    const hero = [
+      '<section class="blog-hero" aria-label="博客介绍">',
+      '  <div class="blog-hero__copy">',
+      '    <p class="blog-hero__kicker">JLU · GIS · Algorithm · Engineering</p>',
+      '    <h1>Lǚzi\'s Blog</h1>',
+      '    <p>记录算法、系统、工程与思考，把复杂问题拆成可以复盘的路径。</p>',
+      '    <div class="blog-hero__stats" aria-label="博客方向">',
+      '      <span><strong>算法</strong>边界与套路</span>',
+      '      <span><strong>系统</strong>缓存与 OS</span>',
+      '      <span><strong>工程</strong>工具与自动化</span>',
+      '    </div>',
+      '  </div>',
+      '  <div class="blog-hero__visual" aria-hidden="true">',
+      '    <span class="hero-node hero-node-a"></span>',
+      '    <span class="hero-node hero-node-b"></span>',
+      '    <span class="hero-node hero-node-c"></span>',
+      '  </div>',
+      '</section>'
+    ].join('');
+    $('.post-list.post').first().before(hero);
+  }
+
   $('.post-list.post > a.post-card.post').each((_, card) => {
     const $card = $(card);
     const post = postsByHref.get(normalizeHref($card.attr('href')));
@@ -108,9 +142,13 @@ hexo.extend.filter.register('after_render:html', function(html, data) {
     if ($article.length === 0) return;
 
     $article.addClass(`enhanced-post ${inferClass(title, tags)}`);
+    $card.addClass(inferClass(title, tags));
 
     if ($article.find('.post-card-kicker').length === 0) {
       const $kicker = $('<div class="post-card-kicker"></div>');
+      $('<span class="post-icon"></span>')
+        .html(`<i class="fa-solid ${inferIcon(title, tags)}"></i>`)
+        .appendTo($kicker);
       $('<span class="post-topic"></span>').text(inferTopic(title, tags)).appendTo($kicker);
       tags.slice(0, 3).forEach(tag => {
         $('<span></span>')

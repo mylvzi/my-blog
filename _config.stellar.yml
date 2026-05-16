@@ -14,6 +14,7 @@ inject:
       <script>(function(){var key='stellar-theme-preference';var root=document.documentElement;var stored=localStorage.getItem(key);var systemDark=window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches;var theme=stored==='light'||stored==='dark'?stored:(systemDark?'dark':'light');root.setAttribute('data-theme',theme);root.style.colorScheme=theme;})();</script>
   script:
     - <script src="/js/theme-toggle.js" defer></script>
+    - <script src="/js/blog-effects.js" defer></script>
     - <script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script>
     - <script src="/js/music-player.js" defer></script>
 

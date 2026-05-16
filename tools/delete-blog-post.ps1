@@ -73,7 +73,13 @@ function Find-PostMatches([string]$PostsDir, [string]$QueryText) {
 
 function Get-ImageDirsFromPost([string]$Content, [string]$RepoRoot) {
   $dirs = New-Object System.Collections.Generic.HashSet[string]
-  $matches = [regex]::Matches($Content, '!\[[^\]]*\]\(/images/posts/([^/]+)/[^)]+\)')
+  $patterns = @(
+    '!\[[^\]]*\]\((?:/|\.\./)*images/posts/([^/]+)/[^)]+\)',
+    '<img[^>]+src=["''](?:/|\.\./)*images/posts/([^/]+)/[^"'']+["'']'
+  )
+  $matches = foreach ($pattern in $patterns) {
+    [regex]::Matches($Content, $pattern, [Text.RegularExpressions.RegexOptions]::IgnoreCase)
+  }
   foreach ($match in $matches) {
     $slug = $match.Groups[1].Value
     $dir = Join-Path $RepoRoot "source\images\posts\$slug"

@@ -13,7 +13,7 @@ param(
   [Parameter(Mandatory = $true, Position = 0)]
   [string]$InputPath,
 
-  [string]$AssetsDir = "C:\Users\绿字\Desktop\lsq_learn\img",
+  [string]$AssetsDir = "",
 
   [string]$Slug = "",
 
@@ -24,6 +24,8 @@ param(
   [string]$Date = "",
 
   [string]$PythonExe = "py",
+
+  [switch]$LocalizeRemoteImages,
 
   [switch]$NoDeploy,
 
@@ -142,15 +144,42 @@ function Assert-NoBrokenImageRefs([string]$PostPath) {
   }
 }
 
+function Convert-ObsidianRemoteImages([string]$Text) {
+  return [regex]::Replace($Text, '!\[\[(https?://[^\]|\s]+)(?:\|([^\]]+))?\]\]', {
+    param($Match)
+    $url = $Match.Groups[1].Value
+    $alt = if ($Match.Groups[2].Success) { $Match.Groups[2].Value } else { "" }
+    return "![$alt]($url)"
+  })
+}
+
+function Test-NeedsLocalImageImport([string]$Text) {
+  $obsidianMatches = [regex]::Matches($Text, '!\[\[([^|\]]+)(?:\|[^\]]*)?\]\]')
+  foreach ($match in $obsidianMatches) {
+    $ref = $match.Groups[1].Value.Trim()
+    if ($ref -notmatch '^https?://') {
+      return $true
+    }
+  }
+
+  $imageMatches = [regex]::Matches($Text, '!\[[^\]]*\]\(([^)]+)\)')
+  foreach ($match in $imageMatches) {
+    $imagePath = $match.Groups[1].Value.Trim()
+    if ($imagePath -match '^(https?://|data:|/images/)') {
+      continue
+    }
+    return $true
+  }
+
+  return $false
+}
+
 $repoRoot = (Resolve-Path -LiteralPath (Join-Path $PSScriptRoot "..")).Path
 $postsDir = Join-Path $repoRoot "source\_posts"
 $importScript = "C:\Users\绿字\.codex\skills\csdn-hexo-import\scripts\import_csdn_md.py"
 $deployScript = Join-Path $repoRoot "deploy.bat"
 
 $sourcePath = Resolve-RequiredPath $InputPath "Obsidian Markdown 文件"
-if ($AssetsDir) {
-  $AssetsDir = Resolve-RequiredPath $AssetsDir "Obsidian 附件目录"
-}
 Resolve-RequiredPath $postsDir "Hexo 文章目录" | Out-Null
 Resolve-RequiredPath $importScript "图片导入脚本" | Out-Null
 Resolve-RequiredPath $deployScript "部署脚本" | Out-Null
@@ -176,22 +205,27 @@ $postPath = Join-Path $postsDir ([IO.Path]::GetFileName($sourcePath))
 Copy-Item -LiteralPath $sourcePath -Destination $postPath -Force
 
 $postText = Get-Content -LiteralPath $postPath -Raw -Encoding UTF8
+$postText = Convert-ObsidianRemoteImages $postText
 $postText = Set-FrontMatter -Text $postText -Title $title -PostDate $Date -PostTags $Tags -PostCategory $Category -Summary $summary
 Set-Content -LiteralPath $postPath -Value $postText -Encoding UTF8 -NoNewline
 
-$importArgs = @($importScript, "--input", $postPath, "--repo-root", $repoRoot, "--slug", $Slug)
-if ($AssetsDir) {
-  $importArgs += @("--assets-dir", $AssetsDir)
-}
-& $PythonExe @importArgs
-if ($LASTEXITCODE -ne 0) {
-  throw "图片导入失败: $PythonExe 退出码 $LASTEXITCODE"
-}
+$needsLocalImageImport = Test-NeedsLocalImageImport $postText
+if ($needsLocalImageImport -or $LocalizeRemoteImages) {
+  $importArgs = @($importScript, "--input", $postPath, "--repo-root", $repoRoot, "--slug", $Slug)
+  if ($AssetsDir) {
+    $AssetsDir = Resolve-RequiredPath $AssetsDir "Obsidian 附件目录"
+    $importArgs += @("--assets-dir", $AssetsDir)
+  }
+  & $PythonExe @importArgs
+  if ($LASTEXITCODE -ne 0) {
+    throw "图片导入失败: $PythonExe 退出码 $LASTEXITCODE"
+  }
 
-# Re-apply front matter after image rewriting so title/category metadata stays intentional.
-$postText = Get-Content -LiteralPath $postPath -Raw -Encoding UTF8
-$postText = Set-FrontMatter -Text $postText -Title $title -PostDate $Date -PostTags $Tags -PostCategory $Category -Summary $summary
-Set-Content -LiteralPath $postPath -Value $postText -Encoding UTF8 -NoNewline
+  # Re-apply front matter after image rewriting so title/category metadata stays intentional.
+  $postText = Get-Content -LiteralPath $postPath -Raw -Encoding UTF8
+  $postText = Set-FrontMatter -Text $postText -Title $title -PostDate $Date -PostTags $Tags -PostCategory $Category -Summary $summary
+  Set-Content -LiteralPath $postPath -Value $postText -Encoding UTF8 -NoNewline
+}
 
 Assert-NoBrokenImageRefs $postPath
 
@@ -231,7 +265,11 @@ $previewPath = (Join-Path "source\_posts" ([IO.Path]::GetFileName($postPath)))
 $imageDir = Join-Path $repoRoot "source\images\posts\$Slug"
 Write-Host "完成: $title"
 Write-Host "文章: $previewPath"
-Write-Host "图片: $imageDir"
+if ($needsLocalImageImport -or $LocalizeRemoteImages) {
+  Write-Host "图片: $imageDir"
+} else {
+  Write-Host "图片: 已保留 Obsidian 图床链接"
+}
 Write-Host "Slug: $Slug"
 if ($NoDeploy) {
   Write-Host "部署: 已跳过 (-NoDeploy)"
