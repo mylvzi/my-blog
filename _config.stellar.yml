@@ -25,6 +25,7 @@ site_tree:
   index_blog:
     sidebar: starter, welcome, recent
     nav_tabs:
+      Prompt合集: /prompts/
       关于我: /about/
   index_archive:
     menu_id: archives
