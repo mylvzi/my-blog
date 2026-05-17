@@ -526,11 +526,9 @@ body:after {
 
 .prompt-collection {
   display: grid;
-  gap: 18px;
   margin: 1rem 0;
 }
 
-.prompt-collection__intro,
 .prompt-card {
   border: 1px solid var(--blog-border);
   border-radius: 8px;
@@ -540,33 +538,6 @@ body:after {
   -webkit-backdrop-filter: blur(16px) saturate(130%);
 }
 
-.prompt-collection__intro {
-  padding: 20px;
-}
-
-.prompt-collection__eyebrow,
-.prompt-card__meta span {
-  display: inline-flex;
-  align-items: center;
-  min-height: 24px;
-  padding: 2px 8px;
-  border-radius: 999px;
-  background: rgba(47, 125, 92, 0.1);
-  color: #28694e;
-  font-size: 0.75rem;
-  font-weight: 800;
-  line-height: 1.35;
-}
-
-.prompt-collection h1 {
-  margin: 12px 0 8px;
-  color: var(--blog-ink);
-  font-size: 1.7rem;
-  line-height: 1.25;
-  letter-spacing: 0;
-}
-
-.prompt-collection__intro p,
 .prompt-card__desc {
   margin: 0;
   color: rgba(23, 32, 51, 0.68);
@@ -581,57 +552,48 @@ body:after {
 .prompt-card {
   position: relative;
   display: grid;
-  gap: 12px;
-  padding: 18px;
+  gap: 14px;
+  padding: 16px;
   overflow: hidden;
 }
 
-.prompt-card:before {
-  position: absolute;
-  top: 18px;
-  bottom: 18px;
-  left: 8px;
-  width: 4px;
-  border-radius: 999px;
-  background: var(--blog-green);
-  content: "";
-}
-
-.prompt-card h2 {
-  margin: 0;
-  padding-left: 10px;
-  color: var(--blog-ink);
-  font-size: 1.25rem;
-  line-height: 1.35;
-  letter-spacing: 0;
-}
-
-.prompt-card__meta,
-.prompt-card__desc,
-.prompt-card__prompt,
-.prompt-copy {
-  margin-left: 10px;
+.prompt-code {
+  position: relative;
+  border: 1px solid rgba(47, 111, 221, 0.1);
+  border-radius: 8px;
+  background: #f6f8fb;
+  overflow: hidden;
 }
 
 .prompt-card__prompt {
-  padding: 14px;
-  border: 1px solid rgba(47, 111, 221, 0.1);
-  border-radius: 8px;
-  background: rgba(15, 23, 42, 0.035);
+  margin: 0;
+  padding: 42px 16px 16px;
   color: rgba(23, 32, 51, 0.78);
+  font-family: "SF Mono", Menlo, Monaco, Consolas, system-ui, "Courier New", monospace, sans-serif;
+  font-size: 0.9rem;
   line-height: 1.75;
+  white-space: pre-wrap;
+}
+
+.prompt-card__prompt code {
+  font: inherit;
+  color: inherit;
+  background: transparent;
 }
 
 .prompt-copy {
-  justify-self: start;
-  min-height: 34px;
-  padding: 6px 12px;
-  border: 1px solid rgba(47, 111, 221, 0.14);
-  border-radius: 8px;
-  background: var(--blog-accent);
-  color: #fff;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 1;
+  min-height: 28px;
+  padding: 4px 10px;
+  border: 1px solid rgba(47, 111, 221, 0.16);
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.92);
+  color: #2558b2;
   font: inherit;
-  font-size: 0.86rem;
+  font-size: 0.78rem;
   font-weight: 800;
   cursor: pointer;
   transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
@@ -639,7 +601,7 @@ body:after {
 
 .prompt-copy:hover {
   transform: translateY(-1px);
-  box-shadow: 0 10px 24px rgba(47, 111, 221, 0.18);
+  box-shadow: 0 8px 20px rgba(47, 111, 221, 0.14);
 }
 
 .prompt-copy:focus-visible {
@@ -669,13 +631,8 @@ body:after {
     margin: 0.75rem 0;
   }
 
-  .prompt-collection__intro,
   .prompt-card {
     padding: 14px;
-  }
-
-  .prompt-card h2 {
-    font-size: 1.12rem;
   }
 }
 
@@ -731,7 +688,6 @@ html[data-theme="dark"] .l_left .leftbar-container:before {
 html[data-theme="dark"] .widgets .widget-wrapper.markdown,
 html[data-theme="dark"] .learning-path,
 html[data-theme="dark"] .post-list .post-card,
-html[data-theme="dark"] .prompt-collection__intro,
 html[data-theme="dark"] .prompt-card {
   border-color: rgba(255, 255, 255, 0.08);
   background: rgba(16, 24, 38, 0.72);
@@ -751,9 +707,7 @@ html[data-theme="dark"] .l_left .header .title .main,
 html[data-theme="dark"] .profile-tagline,
 html[data-theme="dark"] .learning-path h2,
 html[data-theme="dark"] .learning-track__title,
-html[data-theme="dark"] .post-list .post-card .post-title,
-html[data-theme="dark"] .prompt-collection h1,
-html[data-theme="dark"] .prompt-card h2 {
+html[data-theme="dark"] .post-list .post-card .post-title {
   color: #ecf4ff;
 }
 
@@ -766,7 +720,6 @@ html[data-theme="dark"] .learning-track a,
 html[data-theme="dark"] .learning-track span:not(.learning-track__title):not(.learning-track__arrow),
 html[data-theme="dark"] .post-list .post-card .excerpt > p,
 html[data-theme="dark"] .post-list .post-card .reading-meta,
-html[data-theme="dark"] .prompt-collection__intro p,
 html[data-theme="dark"] .prompt-card__desc,
 html[data-theme="dark"] .prompt-card__prompt {
   color: rgba(236, 244, 255, 0.68);
@@ -795,9 +748,15 @@ html[data-theme="dark"] .learning-track {
   background: rgba(255, 255, 255, 0.04);
 }
 
-html[data-theme="dark"] .prompt-card__prompt {
+html[data-theme="dark"] .prompt-code {
   border-color: rgba(255, 255, 255, 0.08);
   background: rgba(255, 255, 255, 0.05);
+}
+
+html[data-theme="dark"] .prompt-copy {
+  border-color: rgba(120, 168, 255, 0.18);
+  background: rgba(120, 168, 255, 0.12);
+  color: #b9d2ff;
 }
 
 .aplayer.aplayer-fixed {

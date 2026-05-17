@@ -6,23 +6,13 @@ comment: false
 ---
 
 <section class="prompt-collection">
-  <div class="prompt-collection__intro">
-    <span class="prompt-collection__eyebrow">Prompt Library</span>
-    <h1>Prompt合集</h1>
-    <p>这里收集我使用过的高质量 Prompt，方便在学习、写作、编程和思考训练中快速复用。</p>
-  </div>
-
   <div class="prompt-grid">
     <article class="prompt-card">
-      <div class="prompt-card__meta">
-        <span>思考训练</span>
+      <p class="prompt-card__desc">用于通过犀利反问，把一个模糊想法拆到更清楚。</p>
+      <div class="prompt-code">
+        <button class="prompt-copy" type="button" data-copy-prompt>复制</button>
+        <pre class="prompt-card__prompt" data-prompt-text="请你扮演我的辩论队友 / 苏格拉底，针对我这个模糊的想法提出 3 个犀利的反问，逼我自己把逻辑想清楚。"><code>请你扮演我的辩论队友 / 苏格拉底，针对我这个模糊的想法提出 3 个犀利的反问，逼我自己把逻辑想清楚。</code></pre>
       </div>
-      <h2>思考训练</h2>
-      <p class="prompt-card__desc">用辩论队友 / 苏格拉底式追问，把一个模糊想法拆到更清楚。</p>
-      <div class="prompt-card__prompt" data-prompt-text="请你扮演我的辩论队友 / 苏格拉底，针对我这个模糊的想法提出 3 个犀利的反问，逼我自己把逻辑想清楚。">
-        请你扮演我的辩论队友 / 苏格拉底，针对我这个模糊的想法提出 3 个犀利的反问，逼我自己把逻辑想清楚。
-      </div>
-      <button class="prompt-copy" type="button" data-copy-prompt>复制 Prompt</button>
     </article>
   </div>
 </section>
