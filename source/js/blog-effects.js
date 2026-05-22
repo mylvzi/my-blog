@@ -2,6 +2,7 @@
   var root = document.documentElement;
   var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var INTRO_TEXT = "Welcome To Lvzi's Blog";
+  var INTRO_STORAGE_KEY = 'lvzi-blog-intro-shown';
 
   function clamp(value, min, max) {
     return Math.min(max, Math.max(min, value));
@@ -33,8 +34,25 @@
     return path === '/';
   }
 
+  function hasShownIntro() {
+    try {
+      return window.sessionStorage.getItem(INTRO_STORAGE_KEY) === 'true';
+    } catch (error) {
+      return root.dataset.blogIntroShown === 'true';
+    }
+  }
+
+  function markIntroShown() {
+    try {
+      window.sessionStorage.setItem(INTRO_STORAGE_KEY, 'true');
+    } catch (error) {
+      root.dataset.blogIntroShown = 'true';
+    }
+  }
+
   function showIntroCover() {
-    if (!isHomePage() || document.querySelector('.blog-intro-cover')) return;
+    if (!isHomePage() || hasShownIntro() || document.querySelector('.blog-intro-cover')) return;
+    markIntroShown();
 
     var cover = document.createElement('div');
     cover.className = 'blog-intro-cover';
