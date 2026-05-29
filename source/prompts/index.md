@@ -1,7 +1,7 @@
 ---
 title: Prompt合集
 date: 2026-05-17 10:46:00
-nav_tabs: true
+nav_tabs: false
 comment: false
 ---
 
