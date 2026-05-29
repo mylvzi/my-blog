@@ -29,6 +29,7 @@ site_tree:
     nav_tabs:
       Prompt合集: /prompts/
       关于我: /about/
+      阅读笔记: /reading/
   index_archive:
     menu_id: archives
   topic:
