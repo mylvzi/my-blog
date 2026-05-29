@@ -87,6 +87,7 @@ comment: true
 }
 
 $importedCount = 0
+$updatedCount = 0
 $skippedCount = 0
 $errors = @()
 
@@ -98,16 +99,9 @@ foreach ($monthDir in $monthDirs) {
     $sourcePath = $file.FullName
     $relativeKey = $sourcePath.Replace($readingSourceDir, "").TrimStart("\").Replace("\", "/")
 
-    # Skip if already imported and unchanged
-    if ($tracker.ContainsKey($relativeKey)) {
-      $tracked = $tracker[$relativeKey]
-      $currentHash = (Get-FileHash -LiteralPath $sourcePath -Algorithm SHA256).Hash
-      if ($currentHash -eq $tracked) {
-        Write-Host "SKIP (unchanged): $relativeKey"
-        $skippedCount++
-        continue
-      }
-    }
+    # Quick skip: tracker hash matches → verified unchanged
+    $currentHash = (Get-FileHash -LiteralPath $sourcePath -Algorithm SHA256).Hash
+    $isModified = $tracker.ContainsKey($relativeKey) -and $tracker[$relativeKey] -ne $currentHash
 
     # Parse date
     $dateInfo = Parse-DateFromFilename $file.Name
@@ -143,13 +137,24 @@ foreach ($monthDir in $monthDirs) {
     $postFileName = "$($dateInfo.DateFormatted)-reading-note.md"
     $postPath = Join-Path $postsDir $postFileName
 
-    # Check if a post with this permalink already exists (from a different source file)
+    # If post already exists, compare actual content to decide skip vs update
     if (Test-Path $postPath) {
-      Write-Host "SKIP (post exists): $postFileName"
-      $skippedCount++
-      # Still update tracker
-      $tracker[$relativeKey] = (Get-FileHash -LiteralPath $sourcePath -Algorithm SHA256).Hash
-      continue
+      $existingPost = Get-Content -LiteralPath $postPath -Raw -Encoding UTF8
+      # Strip front matter from existing post to get body
+      $existingBody = $existingPost
+      if ($existingBody -match "^\s*---[\s\S]*?---") {
+        $existingBody = $existingBody -replace "^\s*---[\s\S]*?---", ""
+      }
+      $existingBody = $existingBody.Trim()
+
+      if ($existingBody -eq $bodyContent) {
+        Write-Host "SKIP (content unchanged): $relativeKey"
+        $skippedCount++
+        # Update tracker so hash quick-skip works next time
+        $tracker[$relativeKey] = $currentHash
+        continue
+      }
+      $isModified = $true
     }
 
     # Build the post
@@ -158,11 +163,16 @@ foreach ($monthDir in $monthDirs) {
 
     try {
       Set-Content -LiteralPath $postPath -Value $postContent -Encoding UTF8 -NoNewline
-      Write-Host "IMPORTED: $relativeKey -> $postFileName"
+      if ($isModified) {
+        Write-Host "UPDATED: $relativeKey -> $postFileName"
+        $updatedCount++
+      } else {
+        Write-Host "IMPORTED: $relativeKey -> $postFileName"
+        $importedCount++
+      }
 
       # Update tracker
       $tracker[$relativeKey] = (Get-FileHash -LiteralPath $sourcePath -Algorithm SHA256).Hash
-      $importedCount++
     } catch {
       $msg = "ERROR: $relativeKey - $_"
       Write-Host $msg
@@ -182,14 +192,15 @@ try {
 Write-Host ""
 Write-Host "===== Sync Summary ====="
 Write-Host "Imported: $importedCount"
+Write-Host "Updated : $updatedCount"
 Write-Host "Skipped : $skippedCount"
 if ($errors.Count -gt 0) {
   Write-Host "Errors  : $($errors.Count)"
   $errors | ForEach-Object { Write-Host "  $_" }
 }
 
-if ($importedCount -eq 0) {
-  Write-Host "No new notes to import. Done."
+if ($importedCount -eq 0 -and $updatedCount -eq 0) {
+  Write-Host "No new or updated notes. Done."
   exit 0
 }
 
