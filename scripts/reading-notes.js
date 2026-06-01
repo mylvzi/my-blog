@@ -1,5 +1,7 @@
 'use strict';
 
+const { renderHeatmap } = require('./heatmap-helper');
+
 // Mark reading note posts so Stellar's index.ejs skips them (line 25: post.indexing != false)
 hexo.extend.filter.register('before_post_render', function(data) {
   if (data.reading_note === true) {
@@ -42,6 +44,14 @@ function renderReadingIndex(months) {
     html += '</li>';
   });
   html += '</ul>';
+
+  // Collect all posts for heatmap
+  const allPosts = [];
+  months.forEach(function(m) {
+    allPosts.push.apply(allPosts, m.posts);
+  });
+  html += renderHeatmap(allPosts, hexo.config.root + 'reading/');
+
   return html;
 }
 

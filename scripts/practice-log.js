@@ -1,5 +1,7 @@
 'use strict';
 
+const { renderHeatmap } = require('./heatmap-helper');
+
 // Mark practice log posts so Stellar's index.ejs skips them
 hexo.extend.filter.register('before_post_render', function(data) {
   if (data.practice_log === true) {
@@ -35,6 +37,14 @@ function renderPracticeIndex(months) {
     html += '</li>';
   });
   html += '</ul>';
+
+  // Collect all posts for heatmap
+  const allPosts = [];
+  months.forEach(function(m) {
+    allPosts.push.apply(allPosts, m.posts);
+  });
+  html += renderHeatmap(allPosts, hexo.config.root + 'practice/');
+
   return html;
 }
 
