@@ -1,8 +1,5 @@
 'use strict';
 
-const fs = require('fs');
-const path = require('path');
-
 function getTime(value) {
   if (!value) return 0;
   if (value instanceof Date) return value.getTime();
@@ -23,10 +20,16 @@ function escapeHtml(text) {
     .replace(/'/g, '&#39;');
 }
 
-hexo.extend.filter.register('after_generate', function() {
-  const publicDir = hexo.public_dir;
-  const posts = Array.from(hexo.locals.get('posts').data || [])
+hexo.extend.filter.register('after_render:html', function(html, data) {
+  // Skip non-HTML and feeds
+  if (!html || typeof html !== 'string') return html;
+  if (!/<widget class="widget-wrapper recent post-list"/.test(html)) return html;
+
+  const allPosts = Array.from(hexo.locals.get('posts').data || []);
+
+  const posts = allPosts
     .filter(post => post.title && post.title.length > 0)
+    .filter(post => !post.reading_note && !post.practice_log)
     .sort((a, b) => {
       const aTime = getTime(a.date) || getTime(a.updated);
       const bTime = getTime(b.date) || getTime(b.updated);
@@ -42,28 +45,6 @@ hexo.extend.filter.register('after_generate', function() {
     return `<a class="item title" href="${href}"><span class="title">${escapeHtml(post.title)}</span></a>`;
   }).join('');
 
-  const widgetPattern = /(<widget class="widget-wrapper recent post-list"><div class="widget-header dis-select">.*?<\/div><div class="widget-body fs14">)(.*?)(<\/div><\/widget>)/gs;
-
-  function updateHtmlFile(filePath) {
-    const original = fs.readFileSync(filePath, 'utf8');
-    const updated = original.replace(widgetPattern, `$1${linksHtml}$3`);
-    if (updated !== original) {
-      fs.writeFileSync(filePath, updated, 'utf8');
-    }
-  }
-
-  function walk(dir) {
-    for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
-      const fullPath = path.join(dir, entry.name);
-      if (entry.isDirectory()) {
-        walk(fullPath);
-      } else if (entry.isFile() && fullPath.endsWith('.html')) {
-        updateHtmlFile(fullPath);
-      }
-    }
-  }
-
-  if (fs.existsSync(publicDir)) {
-    walk(publicDir);
-  }
+  const widgetPattern = /(<widget class="widget-wrapper recent post-list"><div class="widget-header dis-select">.*?<\/div><div class="widget-body fs14">)(.*?)(<\/div><\/widget>)/s;
+  return html.replace(widgetPattern, `$1${linksHtml}$3`);
 });
