@@ -29,6 +29,7 @@ site_tree:
     nav_tabs:
       关于我: /about/
       阅读笔记: /reading/
+      事上磨练日志: /practice/
       简历: /resume/
   index_archive:
     menu_id: archives
