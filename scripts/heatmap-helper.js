@@ -24,7 +24,7 @@ function getColor(count, inRange) {
 function renderHeatmap(allPosts, baseUrl) {
   const now = new Date();
   const endDate = new Date(now.getFullYear(), now.getMonth(), now.getDate());
-  const startDate = new Date(now.getFullYear(), now.getMonth() - 3, 1);
+  const startDate = new Date(now.getFullYear(), now.getMonth() - 6, 1);
 
   // Build date -> posts map
   const postsByDate = new Map();
@@ -79,8 +79,8 @@ function renderHeatmap(allPosts, baseUrl) {
   });
 
   // Generate HTML
-  const cellSize = 12;
-  const gap = 3;
+  const cellSize = 15;
+  const gap = 4;
   let html = '<div class="heatmap" style="margin-top: 2.5rem; overflow-x: auto; max-width: 100%;">';
   html += '<h3 style="margin-bottom: 0.75rem; font-size: 1rem;">记录热力图</h3>';
 
