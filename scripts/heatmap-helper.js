@@ -24,7 +24,7 @@ function getColor(count, inRange) {
 function renderHeatmap(allPosts, baseUrl) {
   const now = new Date();
   const endDate = new Date(now.getFullYear(), now.getMonth(), now.getDate());
-  const startDate = new Date(now.getFullYear(), now.getMonth() - 6, 1);
+  const startDate = new Date(now.getFullYear(), now.getMonth() - 12, 1);
 
   // Build date -> posts map
   const postsByDate = new Map();
