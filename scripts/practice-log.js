@@ -40,7 +40,7 @@ function renderPracticeIndex(months) {
 
 function renderMonthPage(month) {
   var html = '';
-  html += '<p><a href="' + hexo.config.root + 'practice/" style="color: var(--text-muted, #666); text-decoration: none;">← 回事上磨练日志</a></p>';
+  html += '<p><a href="' + hexo.config.root + 'practice/" style="color: var(--text-muted, #666); text-decoration: none;">← 返回事上磨练日志</a></p>';
   html += '<h1>' + monthLabel(month.key) + '</h1>';
   html += '<ul style="list-style: none; padding: 0; display: flex; flex-direction: column; gap: 0.5rem;">';
   month.posts.forEach(function(post) {
