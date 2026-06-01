@@ -8,19 +8,16 @@
   - Parses date from filename (2026-5-28.md -> 2026-05-28)
   - Creates Hexo post with reading_note front matter
   - Tracks imported files in .reading-notes-tracker.json to avoid duplicates
-  - Optionally runs deploy.bat to push to remote
+  - Automatically runs deploy.bat to push to remote
 
 .EXAMPLE
   pwsh -ExecutionPolicy Bypass -File .\tools\sync-reading-notes.ps1
-  pwsh -ExecutionPolicy Bypass -File .\tools\sync-reading-notes.ps1 -NoDeploy
 
 .SCHEDULE (every 3 days via Windows Task Scheduler)
   schtasks /create /tn "SyncReadingNotes" /tr "pwsh -ExecutionPolicy Bypass -File D:\myblog\my-blog\tools\sync-reading-notes.ps1" /sc daily /mo 3 /st 09:00
 #>
 
-param(
-  [switch]$NoDeploy
-)
+param()
 
 $ErrorActionPreference = "Stop"
 [Console]::OutputEncoding = [Text.Encoding]::UTF8
@@ -222,21 +219,17 @@ try {
 }
 
 # Deploy
-if (-not $NoDeploy) {
-  Write-Host ""
-  Write-Host "===== Deploying ====="
-  Push-Location $repoRoot
-  try {
-    cmd /c "echo. | call `"$deployScript`""
-    if ($LASTEXITCODE -ne 0) {
-      Write-Host "Deploy failed with exit code $LASTEXITCODE"
-      Pop-Location
-      exit 1
-    }
-  } finally {
+Write-Host ""
+Write-Host "===== Deploying ====="
+Push-Location $repoRoot
+try {
+  cmd /c "echo. | call `"$deployScript`""
+  if ($LASTEXITCODE -ne 0) {
+    Write-Host "Deploy failed with exit code $LASTEXITCODE"
     Pop-Location
+    exit 1
   }
-  Write-Host "Deploy complete. GitHub Actions will publish to mylvzi.github.io."
-} else {
-  Write-Host "Deploy skipped (-NoDeploy). Run .\deploy.bat manually to push."
+} finally {
+  Pop-Location
 }
+Write-Host "Deploy complete. GitHub Actions will publish to mylvzi.github.io."
