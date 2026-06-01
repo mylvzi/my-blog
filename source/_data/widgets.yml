@@ -15,19 +15,7 @@ welcome:
   content: | 
     <div class="profile-card">
       <p class="profile-kicker">JLU · QA · 北京</p>
-      <p class="profile-tagline">记录算法、系统、工程与思考</p>
-      <p class="profile-subtitle">用文章把复杂问题讲清楚</p>
-      <div class="profile-tags">
-        <span>算法</span>
-        <span>后端</span>
-        <span>操作系统</span>
-        <span>LeetCode</span>
-        <span>JLU</span>
-      </div>
-      <div class="profile-status">
-        <span>正在读：Operating Systems: Three Easy Pieces</span>
-        <span>正在刷：动态规划</span>
-        <span>最近在想：如何把递归讲得更直观</span>
-      </div>
+      <p class="profile-motto">内驭专注，外抱好奇</p>
+      <p class="profile-motto">事上磨练，终身进化</p>
       <p class="profile-quote">复杂问题，拆开就不复杂了。</p>
     </div>
