@@ -1,6 +1,6 @@
 welcome:
   layout: markdown
-  linklist: # 与 linklist 组件写法相同
+  linklist:
     columns: 3
     items:
       - title: GitHub
@@ -12,7 +12,7 @@ welcome:
       - title: RSS
         icon: '<i class="fa-solid fa-square-rss"></i>'
         url: /atom.xml
-  content: | 
+  content: |
     <div class="profile-card">
       <p class="profile-kicker">JLU · QA · 北京</p>
       <p class="profile-motto">内驭专注，外抱好奇</p>
