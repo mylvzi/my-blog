@@ -10,6 +10,7 @@ inject:
     - <link href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.4.2/css/all.css" rel="stylesheet">
     - <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css">
     - <link rel="stylesheet" href="/css/theme-toggle.css">
+    - <link rel="stylesheet" href="/css/archive-timeline.css">
     - >-
       <script>(function(){document.documentElement.setAttribute('data-theme','light');document.documentElement.style.colorScheme='light';})();</script>
   script:
