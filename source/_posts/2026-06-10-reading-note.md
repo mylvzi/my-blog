@@ -2,6 +2,8 @@
 title: "2026-6-10"
 date: 2026-06-10
 permalink: reading/2026-06-10/
+categories:
+  - 阅读笔记
 reading_note: true
 tags:
   - 阅读笔记

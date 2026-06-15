@@ -3,6 +3,8 @@ theme: knowledge-base
 themeName: 知识库
 title: 前缀和算法系列-概念讲解-应用场景-大量例题讲解
 date: 2026-04-28
+categories:
+  - 技术
 ---
 >**大家好,我是LvZi**,今天带来`前缀和算法系列|概念讲解|应用场景|大量例题讲解`
 >![在这里插入图片描述](/images/posts/prefix_sum/img_01.jpeg)

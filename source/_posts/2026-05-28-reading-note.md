@@ -2,6 +2,8 @@
 title: "2026-5-28"
 date: 2026-05-28
 permalink: reading/2026-05-28/
+categories:
+  - 阅读笔记
 reading_note: true
 tags:
   - 阅读笔记

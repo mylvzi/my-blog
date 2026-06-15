@@ -1,21 +1,8 @@
 welcome:
   layout: markdown
-  linklist:
-    columns: 3
-    items:
-      - title: GitHub
-        icon: '<i class="fa-brands fa-github"></i>'
-        url: https://github.com/mylvzi
-      - title: X
-        icon: '<i class="fa-brands fa-x-twitter"></i>'
-        url: https://x.com/sqH1219841
-      - title: RSS
-        icon: '<i class="fa-solid fa-square-rss"></i>'
-        url: /atom.xml
   content: |
     <div class="profile-card">
       <p class="profile-kicker">JLU · QA · 北京</p>
       <p class="profile-motto">内驭专注，外抱好奇</p>
       <p class="profile-motto">事上磨练，终身进化</p>
-      <p class="profile-quote">复杂问题，拆开就不复杂了。</p>
     </div>
