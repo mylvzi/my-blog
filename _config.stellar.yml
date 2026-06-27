@@ -50,10 +50,9 @@ style:
   font-size:
     body: 1rem
   font-family:
-    logo: '"Helvetica Neue", Helvetica, Arial, system-ui, "Microsoft Yahei", "Segoe UI", -apple-system, Roboto, Ubuntu, sans-serif'
-    body: '"Helvetica Neue", Helvetica, Arial, system-ui, "Microsoft Yahei", "Segoe UI", -apple-system, Roboto, Ubuntu, sans-serif'
-    code: '"SF Mono", Menlo, Monaco, Consolas, system-ui, "Courier New", monospace, sans-serif'
-    codeblock: '"SF Mono", Menlo, Monaco, Consolas, system-ui, "Courier New", monospace, sans-serif'
+    logo: '"Source Han Sans CN", "Noto Sans CJK SC", "Microsoft Yahei", "PingFang SC", "Helvetica Neue", Helvetica, Arial, system-ui, sans-serif'
+    body: '"Source Han Sans CN", "Noto Sans CJK SC", "Microsoft Yahei", "PingFang SC", "Helvetica Neue", Helvetica, Arial, system-ui, sans-serif'
+    code: '"JetBrains Mono", "SF Mono", Menlo, Monaco, Consolas, monospace'
 
 comments:
   service: utterances

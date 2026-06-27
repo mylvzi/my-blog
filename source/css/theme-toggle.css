@@ -2,6 +2,20 @@
    极简温暖风格 — inspired by Claude Code web edition
    ============================================================ */
 
+/* ---- Inline Code (亮色标签风格) ---- */
+.md-text p > code:not([class]),
+.md-text li > code:not([class]),
+.md-text blockquote code:not([class]) {
+  font-family: "JetBrains Mono", "SF Mono", Menlo, Monaco, Consolas, monospace;
+  font-size: 0.875em;
+  background: var(--code-bg);
+  color: var(--text);
+  padding: 0.2em 0.5em;
+  border-radius: 4px;
+  border-left: 3px solid var(--accent);
+  margin: 0 0.1em;
+}
+
 :root {
   /* 亮色 */
   --bg: #faf8f5;

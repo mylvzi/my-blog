@@ -249,6 +249,9 @@ try {
     $err = Join-Path $repoRoot ".hexo-server.err.log"
     Remove-Item -LiteralPath $out, $err -Force -ErrorAction SilentlyContinue
     Start-Process -FilePath "npm.cmd" -ArgumentList @("run", "start") -WorkingDirectory $repoRoot -WindowStyle Hidden -RedirectStandardOutput $out -RedirectStandardError $err
+    # Wait for server to start, then open browser
+    Start-Sleep -Seconds 5
+    Start-Process -FilePath "cmd.exe" -ArgumentList "/c start http://localhost:4000"
   }
 
   if (-not $NoDeploy) {
