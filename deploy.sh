@@ -62,10 +62,3 @@ else
   echo "Git push failed."
   exit 1
 fi
-
-  echo "========================================"
-  echo "Done"
-  echo "========================================"
-  echo "Source pushed to origin/main."
-  echo "GitHub Actions will deploy the generated site to mylvzi.github.io."
-fi
