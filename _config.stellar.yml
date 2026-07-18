@@ -26,6 +26,7 @@ site_tree:
     nav_tabs:
       关于我: /about/
       阅读笔记: /reading/
+      碎碎念: /musing/
   index_archive:
     menu_id: archives
   topic:

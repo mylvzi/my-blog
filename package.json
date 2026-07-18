@@ -7,7 +7,7 @@
     "clean": "hexo clean",
     "start": "hexo clean & hexo server -l -p 4000",
     "build": "hexo clean & hexo generate",
-    "deploy": "bash scripts/hexo_deploy.sh"
+    "deploy": "bash tools/hexo_deploy.sh"
   },
   "hexo": {
     "version": "6.3.0"
@@ -31,5 +31,10 @@
     "hexo-theme-stellar": "^1.29.1",
     "hexo-word-counter": "^0.0.3",
     "undici": "^7.19.2"
+  },
+  "allowScripts": {
+    "hexo-util@3.3.0": true,
+    "hexo-util@2.7.0": true,
+    "hexo-util@2.4.0": true
   }
 }
