@@ -51,35 +51,17 @@ else
   git commit -m "$msg" || { echo "Git commit failed."; exit 1; }
 fi
 
-# Push
-# Try direct push first, fall back to HTTP proxy (for SSH remotes, convert to HTTPS)
-if git push origin main 2>/dev/null; then
+# Push via SSH on port 443 (configured in ~/.ssh/config: ssh.github.com:443)
+if git push origin main; then
   echo "========================================"
   echo "Done"
   echo "========================================"
   echo "Source pushed to origin/main."
   echo "GitHub Actions will deploy the generated site to mylvzi.github.io."
 else
-  echo "Direct Git push failed."
-  echo "Checking local proxy http://127.0.0.1:7897 ..."
-
-  if lsof -i :7897 -sTCP:LISTEN &>/dev/null; then
-    echo "Retrying Git push via proxy 127.0.0.1:7897 ..."
-    # Switch to HTTPS temporarily so http.proxy works
-    SSH_URL=$(git remote get-url origin)
-    git remote set-url origin https://github.com/mylvzi/my-blog.git
-    if git -c http.proxy=http://127.0.0.1:7897 push origin main; then
-      git remote set-url origin "$SSH_URL"
-      echo "Push successful."
-    else
-      git remote set-url origin "$SSH_URL"
-      echo "Git push failed via proxy."
-      exit 1
-    fi
-  else
-    echo "Git push failed, and local proxy 7897 is not available."
-    exit 1
-  fi
+  echo "Git push failed."
+  exit 1
+fi
 
   echo "========================================"
   echo "Done"
