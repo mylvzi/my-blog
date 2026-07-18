@@ -52,6 +52,7 @@ else
 fi
 
 # Push
+# Try direct push first, fall back to HTTP proxy (for SSH remotes, convert to HTTPS)
 if git push origin main 2>/dev/null; then
   echo "========================================"
   echo "Done"
@@ -63,11 +64,18 @@ else
   echo "Checking local proxy http://127.0.0.1:7897 ..."
 
   if lsof -i :7897 -sTCP:LISTEN &>/dev/null; then
-    echo "Retrying Git push via http://127.0.0.1:7897 ..."
-    git -c http.proxy=http://127.0.0.1:7897 push origin main || {
-      echo "Git push failed via local proxy."
+    echo "Retrying Git push via proxy 127.0.0.1:7897 ..."
+    # Switch to HTTPS temporarily so http.proxy works
+    SSH_URL=$(git remote get-url origin)
+    git remote set-url origin https://github.com/mylvzi/my-blog.git
+    if git -c http.proxy=http://127.0.0.1:7897 push origin main; then
+      git remote set-url origin "$SSH_URL"
+      echo "Push successful."
+    else
+      git remote set-url origin "$SSH_URL"
+      echo "Git push failed via proxy."
       exit 1
-    }
+    fi
   else
     echo "Git push failed, and local proxy 7897 is not available."
     exit 1
