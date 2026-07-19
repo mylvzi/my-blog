@@ -21,7 +21,12 @@ if [ "${1:-}" = "-h" ] || [ "${1:-}" = "--help" ]; then
 fi
 
 REPO_ROOT="$(cd "$(dirname "$0")/.." && pwd)"
-MUSING_FILE="$REPO_ROOT/source/musing/index.md"
+MUSING_FILE="$REPO_ROOT/source/_data/musings.json"
+
+# Ensure data file exists
+if [ ! -f "$MUSING_FILE" ]; then
+  echo '[]' > "$MUSING_FILE"
+fi
 
 # Parse args
 CONTENT=""
@@ -48,46 +53,31 @@ echo "Adding Musing"
 echo "Date: $TODAY"
 echo "========================================="
 
-# Use Python to insert the new entry after the front matter
+# Use Python to insert the new entry into the JSON file
 RESULT=$(python3 - "$MUSING_FILE" "$TODAY" "$CONTENT" 2>&1 << 'PYEOF'
-import sys, re
+import sys, json
 
 filepath = sys.argv[1]
 today = sys.argv[2]
 content = sys.argv[3]
 
 with open(filepath, 'r', encoding='utf-8') as f:
-    original = f.read()
+    try:
+        musings = json.load(f)
+    except:
+        musings = []
 
-# Check for duplicate: same date + same content already exists
-if f"## {today}" in original:
-    # Extract existing entries for today
-    pattern = rf'## {re.escape(today)}\n\n(.*?)\n\n---'
-    existing = re.findall(pattern, original, re.DOTALL)
-    if content.strip() in [e.strip() for e in existing]:
+# Check for duplicate
+for m in musings:
+    if m.get('date') == today and m.get('content', '').strip() == content.strip():
         print("DUPLICATE")
         sys.exit(0)
 
-fm_match = re.match(r'(^---\s*\n.*?\n---\s*\n)', original, re.DOTALL)
-if not fm_match:
-    print("ERROR: No front matter found in musing page.", file=sys.stderr)
-    sys.exit(1)
-
-front_matter = fm_match.group(1)
-rest = original[fm_match.end():].lstrip('\n')
-
-entry = f"""## {today}
-
-{content}
-
----
-
-"""
-
-new_content = front_matter + '\n' + entry + rest
+# Prepend new entry (newest first)
+musings.insert(0, {"date": today, "content": content})
 
 with open(filepath, 'w', encoding='utf-8') as f:
-    f.write(new_content)
+    json.dump(musings, f, indent=2, ensure_ascii=False)
 
 print("OK")
 PYEOF
@@ -102,7 +92,7 @@ fi
 echo "$RESULT"
 
 echo ""
-echo "Musing added to source/musing/index.md"
+echo "Musing added to source/_data/musings.json"
 echo "Content: $CONTENT"
 
 # ── Build ─────────────────────────────────────────────
