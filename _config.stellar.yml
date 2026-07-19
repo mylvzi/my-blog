@@ -23,12 +23,14 @@ site_tree:
     sidebar: starter, welcome, recent
   index_blog:
     sidebar: starter, welcome, recent
-    nav_tabs:
-      关于我: /about/
-      阅读笔记: /reading/
-      碎碎念: /musing/
   index_archive:
     menu_id: archives
+  about:
+    menu_id: about
+  reading:
+    menu_id: reading
+  musing:
+    menu_id: musing
   topic:
     menu_id: topic
 
