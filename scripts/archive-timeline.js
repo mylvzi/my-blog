@@ -35,7 +35,7 @@ hexo.extend.filter.register('after_render:html', function(html, data) {
   if (allPosts.length === 0) return html;
 
   const posts = allPosts
-    .filter(p => p.title || p.date)
+    .filter(p => (p.title || p.date) && !p.reading_note && !p.practice_log)
     .sort((a, b) => {
       const aTime = getTime(a.date) || getTime(a.updated);
       const bTime = getTime(b.date) || getTime(b.updated);
