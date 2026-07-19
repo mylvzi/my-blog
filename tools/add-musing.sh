@@ -49,8 +49,8 @@ echo "Date: $TODAY"
 echo "========================================="
 
 # Use Python to insert the new entry after the front matter
-python3 - "$MUSING_FILE" "$TODAY" "$CONTENT" << 'PYEOF'
-import sys, re, os
+RESULT=$(python3 - "$MUSING_FILE" "$TODAY" "$CONTENT" 2>&1 << 'PYEOF'
+import sys, re
 
 filepath = sys.argv[1]
 today = sys.argv[2]
@@ -59,7 +59,15 @@ content = sys.argv[3]
 with open(filepath, 'r', encoding='utf-8') as f:
     original = f.read()
 
-# Split at front matter
+# Check for duplicate: same date + same content already exists
+if f"## {today}" in original:
+    # Extract existing entries for today
+    pattern = rf'## {re.escape(today)}\n\n(.*?)\n\n---'
+    existing = re.findall(pattern, original, re.DOTALL)
+    if content.strip() in [e.strip() for e in existing]:
+        print("DUPLICATE")
+        sys.exit(0)
+
 fm_match = re.match(r'(^---\s*\n.*?\n---\s*\n)', original, re.DOTALL)
 if not fm_match:
     print("ERROR: No front matter found in musing page.", file=sys.stderr)
@@ -68,7 +76,6 @@ if not fm_match:
 front_matter = fm_match.group(1)
 rest = original[fm_match.end():].lstrip('\n')
 
-# Format the new entry
 entry = f"""## {today}
 
 {content}
@@ -77,7 +84,6 @@ entry = f"""## {today}
 
 """
 
-# Build new content: front matter + new entry + previous entries
 new_content = front_matter + '\n' + entry + rest
 
 with open(filepath, 'w', encoding='utf-8') as f:
@@ -85,6 +91,15 @@ with open(filepath, 'w', encoding='utf-8') as f:
 
 print("OK")
 PYEOF
+)
+
+if [ "$RESULT" = "DUPLICATE" ]; then
+  echo ""
+  echo "⚠️  This exact musing already exists for today. Skipped."
+  exit 0
+fi
+
+echo "$RESULT"
 
 echo ""
 echo "Musing added to source/musing/index.md"

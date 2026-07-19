@@ -6,26 +6,9 @@ comment: true
 layout: page
 ---
 
-
-
-
-
-
 ## 2026-07-19
 
-花了一周总算把 Attention is All you need给读完了，最大的感触就是没想到GPT只是Transformer中的Decoder部分。。。。。。
-
----
-
-## 2026-07-19
-
-花了一周总算把 Attention is All you need给读完了，最大的感触就是没想到GPT只是Transformer中的Decoder部分。。。。。。
-
----
-
-## 2026-07-19
-
-花了一周总算把 Attention is All you need给读完了，最大的感触就是没想到GPT只是Transformer中的Decoder部分。。。。。。
+花了一周总算把 Attention is All you need 给读完了，最大的感触就是没想到 GPT 只是 Transformer 中的 Decoder 部分。。。。。。
 
 ---
 
