@@ -1,10 +1,13 @@
 ---
-theme: knowledge-base
-themeName: 知识库
-title: 前缀和算法系列-概念讲解-应用场景-大量例题讲解
-date: 2026-04-28
+title: "前缀和算法系列-概念讲解-应用场景-大量例题讲解"
+date: 2026-04-28 22:00:00
+tags:
+  - 算法
+  - 前缀和
 categories:
   - 技术
+comment: true
+summary: "前缀和算法系列，涵盖一维/二维前缀和模版、应用场景及大量例题讲解"
 ---
 >**大家好,我是LvZi**,今天带来`前缀和算法系列|概念讲解|应用场景|大量例题讲解`
 >![在这里插入图片描述](/images/posts/prefix_sum/img_01.jpeg)
