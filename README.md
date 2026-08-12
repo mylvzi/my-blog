@@ -1,27 +1,10 @@
+# Lvzi 的博客
 
-## Lvzi' s Blog
+本仓库的公开博客内容位于 [`docs/`](docs/README.md)，采用 GitBook Git Sync 发布。
 
-个人博客源码仓库，基于 [Hexo](https://github.com/hexojs/hexo) 和 [hexo-theme-stellar](https://github.com/xaoxuu/hexo-theme-stellar) 构建。
+- GitBook 内容入口：[`docs/README.md`](docs/README.md)
+- 导航目录：[`docs/SUMMARY.md`](docs/SUMMARY.md)
+- 同步配置：[`.gitbook.yaml`](.gitbook.yaml)
+- 迁移与发布说明：[`MIGRATION.md`](MIGRATION.md)
 
-### 本地开发
-
-```bash
-npm install
-npm run start
-```
-
-### 构建
-
-```bash
-npm run build
-```
-
-### 部署
-
-仓库根目录提供 `deploy.bat`：
-
-```bat
-deploy.bat
-```
-
-脚本会先构建站点，再提交源码仓库 `main` 分支，由 GitHub Actions 自动发布到 `mylvzi.github.io`。
+旧 Hexo 工程保留在 `.legacy/hexo/`，仅供恢复和历史查阅；GitBook 的内容根已限定为 `docs/`，不会解析该目录。

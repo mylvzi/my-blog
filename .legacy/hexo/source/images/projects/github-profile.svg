@@ -1,0 +1,28 @@
+<svg width="1600" height="900" viewBox="0 0 1600 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1600" height="900" rx="36" fill="#F2F4F7"/>
+  <rect x="72" y="72" width="1456" height="756" rx="28" fill="#FFFFFF" stroke="#D7DCE3" stroke-width="4"/>
+  <rect x="72" y="72" width="1456" height="64" rx="28" fill="#EEF1F5"/>
+  <circle cx="128" cy="104" r="10" fill="#C17C74"/>
+  <circle cx="160" cy="104" r="10" fill="#D9A96A"/>
+  <circle cx="192" cy="104" r="10" fill="#8EAA8A"/>
+  <rect x="120" y="188" width="318" height="500" rx="24" fill="#161B22"/>
+  <circle cx="279" cy="312" r="96" fill="#2D333B"/>
+  <rect x="186" y="442" width="186" height="18" rx="9" fill="#8B949E"/>
+  <rect x="166" y="478" width="226" height="14" rx="7" fill="#57606A"/>
+  <rect x="492" y="188" width="868" height="70" rx="22" fill="#EAF2FF"/>
+  <rect x="492" y="290" width="868" height="126" rx="22" fill="#F6F8FA"/>
+  <rect x="528" y="326" width="316" height="18" rx="9" fill="#24292F"/>
+  <rect x="528" y="360" width="448" height="12" rx="6" fill="#57606A"/>
+  <rect x="492" y="448" width="412" height="208" rx="24" fill="#F6F8FA" stroke="#D0D7DE" stroke-width="3"/>
+  <rect x="938" y="448" width="422" height="208" rx="24" fill="#F6F8FA" stroke="#D0D7DE" stroke-width="3"/>
+  <rect x="528" y="488" width="180" height="16" rx="8" fill="#0969DA"/>
+  <rect x="528" y="524" width="240" height="12" rx="6" fill="#57606A"/>
+  <rect x="528" y="554" width="200" height="12" rx="6" fill="#57606A"/>
+  <rect x="974" y="488" width="180" height="16" rx="8" fill="#0969DA"/>
+  <rect x="974" y="524" width="240" height="12" rx="6" fill="#57606A"/>
+  <rect x="974" y="554" width="200" height="12" rx="6" fill="#57606A"/>
+  <text x="528" y="234" fill="#1F2328" font-size="34" font-family="Segoe UI, Arial, sans-serif">GitHub Profile</text>
+  <text x="528" y="340" fill="#1F2328" font-size="42" font-family="Segoe UI, Arial, sans-serif">mylvzi</text>
+  <text x="528" y="610" fill="#1F2328" font-size="28" font-family="Segoe UI, Arial, sans-serif">Blog Source</text>
+  <text x="974" y="610" fill="#1F2328" font-size="28" font-family="Segoe UI, Arial, sans-serif">Code Archive</text>
+</svg>

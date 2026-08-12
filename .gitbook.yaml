@@ -1,0 +1,32 @@
+# Keep GitBook's importer inside docs/ so archival source trees are never parsed.
+root: ./docs/
+
+structure:
+  readme: README.md
+  summary: SUMMARY.md
+
+# These preserve paths on the GitBook site after the Hexo-to-GitBook migration.
+# Redirect keys intentionally do not begin with '/'.
+redirects:
+  2026/03/30/binary-search-boundaries: tech/algorithms/binary-search.md
+  2026/04/27/lru-lfu-cache-design: tech/algorithms/lru-lfu-cache.md
+  2026/04/28/2026-4-28-preFixSum: tech/algorithms/prefix-sum.md
+  2026/04/29/recursion-intuition: tech/algorithms/recursion.md
+  2026/05/13/wechat-mp-publisher（微信公众号自动发布SKILL）创建分享: tech/ai-tools/wechat-mp-publisher.md
+  2026/05/13/利用Codex制作论文答辩-PPT: tech/ai-tools/codex-thesis-defense-ppt.md
+  2026/06/27/毕业: life/graduation.md
+  reading: reading/README.md
+  reading/2026-05: reading/2026-05/README.md
+  reading/2026-06: reading/2026-06/README.md
+  reading/2026-05-28: reading/2026-05/2026-05-28.md
+  reading/2026-05-29: reading/2026-05/2026-05-29.md
+  reading/2026-06-01: reading/2026-06/2026-06-01.md
+  reading/2026-06-09: reading/2026-06/2026-06-09.md
+  reading/2026-06-10: reading/2026-06/2026-06-10.md
+  reading/2026-06-12: reading/2026-06/2026-06-12.md
+  reading/2026-06-16: reading/2026-06/2026-06-16.md
+  reading/2026-06-17: reading/2026-06/2026-06-17.md
+  reading/2026-06-20: reading/2026-06/2026-06-20.md
+  musing: musing/README.md
+  about: about/README.md
+  projects: projects/README.md
