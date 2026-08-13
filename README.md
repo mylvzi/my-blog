@@ -1,4 +1,4 @@
-# Lvzi 的博客
+# 小林绿子的博客
 
 本仓库的公开博客内容位于 [`docs/`](docs/README.md)，采用 GitBook Git Sync 发布。
 

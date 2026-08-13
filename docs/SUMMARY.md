@@ -1,6 +1,6 @@
 # Table of contents
 
-* [Lvzi 的博客](README.md)
+* [小林绿子的博客](README.md)
 * [技术文章](tech/README.md)
   * [算法与数据结构](tech/algorithms/README.md)
     * [二分查找算法系列：概念、应用场景与例题](tech/algorithms/binary-search.md)

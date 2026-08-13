@@ -20,7 +20,7 @@
   <rect x="500" y="578" width="298" height="12" rx="6" fill="#849BB3"/>
   <rect x="986" y="544" width="214" height="18" rx="9" fill="#D9E5D2"/>
   <rect x="986" y="578" width="298" height="12" rx="6" fill="#9CB08E"/>
-  <text x="500" y="232" fill="#4B3627" font-size="34" font-family="Segoe UI, Arial, sans-serif">Lvzi's Blog</text>
+  <text x="500" y="232" fill="#4B3627" font-size="34" font-family="Segoe UI, Arial, sans-serif">小林绿子的博客</text>
   <text x="500" y="340" fill="#3E2D20" font-size="44" font-family="Segoe UI, Arial, sans-serif">Personal Blog Project</text>
   <text x="500" y="642" fill="#F5F8FB" font-size="32" font-family="Segoe UI, Arial, sans-serif">Theme Customization</text>
   <text x="986" y="642" fill="#F5F8FB" font-size="32" font-family="Segoe UI, Arial, sans-serif">Auto Deployment</text>
