@@ -4,12 +4,8 @@ db.json
 *.log
 node_modules/
 public/
-_book/
-*.epub
-*.mobi
-*.pdf
-.trash/
 .deploy*/
+.trash/
 .idea
 .ffs_db
 package-lock.json
