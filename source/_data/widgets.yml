@@ -2,7 +2,6 @@ welcome:
   layout: markdown
   content: |
     <div class="profile-card">
-      <p class="profile-kicker">JLU · QA · 北京</p>
-      <p class="profile-motto">内驭专注，外抱好奇</p>
-      <p class="profile-motto">事上磨练，终身进化</p>
+      <p class="profile-kicker">斯多葛主义践行者 · 篮球 · FPS · 写作</p>
+      <p class="profile-motto">识别出你能控制的和不能控制的</p>
     </div>
