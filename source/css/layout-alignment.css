@@ -1,0 +1,35 @@
+/* Keep the banner, navigation, and post categories on one shared center line. */
+.site-hero {
+  left: auto;
+  width: min(900px, calc(100% - 48px));
+  margin: 0 auto 1.5rem;
+  transform: none;
+}
+
+.navbar-container {
+  gap: 18px;
+  width: min(900px, calc(100% - 48px));
+}
+
+.navbar nav {
+  justify-content: center;
+  gap: 16px;
+  font-size: 18px;
+}
+
+.site-brand {
+  font-size: 24px;
+}
+
+.navbar-container > .search-wrapper {
+  width: 180px;
+  margin: 0;
+}
+
+.navbar-container > .search-wrapper .search-form {
+  height: 38px;
+}
+
+.navbar-container > .search-wrapper .search-input {
+  font-size: 14px;
+}
