@@ -11,7 +11,7 @@ hexo.extend.generator.register('musings', function(locals) {
       data: {
         layout: 'page',
         title: '碎碎念',
-        content: '<div class="archive-page"><h1 class="archive-title">碎碎念</h1><p class="archive-desc">这里记录一些零散的碎碎念。</p><p style="color:var(--text-muted)">还没有碎碎念。</p></div>',
+        content: '<div class="archive-page"><p style="color:var(--text-muted)">还没有碎碎念。</p></div>',
         menu_id: 'musing',
         date: new Date(),
         comment: false
@@ -40,8 +40,6 @@ hexo.extend.generator.register('musings', function(locals) {
 
   // Build timeline HTML
   let html = '<div class="archive-page">';
-  html += '<h1 class="archive-title">碎碎念</h1>';
-  html += '<p class="archive-desc">这里记录一些零散的碎碎念。</p>';
   html += '<div class="timeline">';
 
   years.forEach(year => {

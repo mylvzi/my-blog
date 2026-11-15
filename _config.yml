@@ -4,12 +4,12 @@
 
 # Site
 
-title: 小林绿子的博客
-subtitle: 斯多葛主义践行者 | 篮球 | FPS | 写作
+title: "Lvzi's Blog"
+subtitle: Curiosity drives everything.
 avatar: /images/avatar.png
 
-author: 小林绿子
-language: zh-CN
+author: Lvzi
+language: en
 #timezone: Asia/Shanghai
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
@@ -23,8 +23,6 @@ permalink_defaults:
 source_dir: source
 public_dir: public
 tag_dir: tags
-archive_dir: archives
-category_dir: categories
 code_dir: downloads/code
 i18n_dir: :lang
 skip_render: "resume/**"
@@ -43,9 +41,7 @@ highlight:
   auto_detect: false
   tab_replace:
 
-# Category & Tag
-default_category: uncategorized
-category_map:
+# Topic tags
 tag_map:
 # Date / Time format
 ## Hexo uses Moment.js to parse and display date

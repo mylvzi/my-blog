@@ -31,9 +31,7 @@ function excerpt(post) {
 }
 
 function renderReadingIndex(months) {
-  let html = '<h1>阅读思考合集</h1>';
-  html += '<p style="color: var(--text-muted, #888); margin-bottom: 2rem;">每日阅读后的思考与摘录，按月归档。</p>';
-  html += '<ul style="list-style: none; padding: 0; display: flex; flex-direction: column; gap: 0.5rem;">';
+  let html = '<ul style="list-style: none; padding: 0; display: flex; flex-direction: column; gap: 0.5rem;">';
   months.forEach(function(m) {
     html += '<li>';
     html += '<a href="' + hexo.config.root + 'reading/' + m.key + '/" style="font-size: 1.05rem; text-decoration: none; color: var(--text-primary, #222);">';

@@ -1,12 +1,11 @@
 ---
 title: wechat-mp-publisher（微信公众号自动发布SKILL）创建分享
 date: 2026-05-13 16:41:20
+blog_category: tech
 tags:
   - 微信公众号
   - 自动化
   - Skill
-categories:
-  - 教程分享
 comment: true
 summary: 需求： 1. 利用 claude 将本地 md 文件自动发布到微信公众号草稿箱（无法直接发布） 本文主要内容： 过程分享以及踩坑指南 零. 前言 微信公众号编辑器渲染的方式是 html，一直都是使用...
 ---

@@ -3,12 +3,11 @@ theme: knowledge-base
 themeName: "知识库"
 title: "利用Codex制作论文答辩 PPT"
 date: 2026-05-13 15:20:00
+blog_category: tech
 tags:
   - Codex
   - PPT
   - AI工具
-categories:
-  - 教程分享
 comment: true
 summary: 记录使用 Codex 制作论文答辩 PPT 的实践过程，包括 goal driven 工作流和结合 PPT Master 生成可编辑 PPT 的拓展思路。
 ---

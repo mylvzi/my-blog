@@ -275,3 +275,442 @@ body {
     transition: none;
   }
 }
+
+/* ---- Reference inspired desktop layout ---- */
+:root {
+  --bg: #f5f4ed;
+  --bg-card: #fff;
+  --text: #24292f;
+  --text-muted: #6f7479;
+  --accent: #1d9bf0;
+  --border: #e3e2da;
+  --code-bg: #f5f4ed;
+  --shadow: 0 1px 3px rgba(30, 28, 24, 0.06);
+}
+
+html,
+body,
+.l_body,
+.l_main {
+  background: #f5f4ed !important;
+  color: #24292f;
+}
+
+.l_body {
+  display: block !important;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.l_body > .l_left,
+.l_body > .l_right,
+.l_body > .float-panel,
+.l_body > .main-mask {
+  display: none !important;
+}
+
+.l_body > .l_main {
+  width: min(100%, 1000px);
+  max-width: none;
+  margin: 0 auto;
+  padding: 76px 0 0;
+}
+
+.l_body > .l_main.hero-interior {
+  padding-top: 0;
+}
+
+.l_body > .l_main.hero-interior > .site-hero {
+  margin-top: 0 !important;
+}
+
+.l_body > .l_main.hero-home {
+  padding-top: 56px;
+}
+
+.l_body > .l_main.hero-interior .article-banner-wrap {
+  display: none !important;
+}
+
+body {
+  font-family: "TsangerJinKai02", "STKaiti", "KaiTi", "Songti SC", serif;
+  font-size: 16px;
+  letter-spacing: 0.025em;
+  line-height: 1.7;
+}
+
+.site-hero {
+  position: relative;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+  min-height: 260px;
+  margin: 0 calc(50% - 50vw) 1.5rem;
+  transform: none;
+  padding: 48px 24px;
+  background: #26201a;
+  color: #f3ebdb;
+  text-align: center;
+}
+
+.site-hero-inner {
+  width: min(900px, 100%);
+}
+
+.site-hero h1 {
+  margin: 0;
+  color: #f3ebdb;
+  font-family: "TsangerJinKai02", "STKaiti", "KaiTi", "Songti SC", serif;
+  font-size: clamp(40px, 4vw, 56px);
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  line-height: 1.3;
+}
+
+.site-hero p {
+  margin: 14px 0 0;
+  color: rgba(243, 235, 219, 0.74);
+  font-size: 16px;
+  letter-spacing: 0.12em;
+}
+
+.l_main .navbar.top {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 30;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar-blur {
+  margin: 0;
+  border: 0;
+  border-bottom: 1px solid #e3e2da;
+  border-radius: 0;
+  background: #fff;
+  box-shadow: none;
+  backdrop-filter: none;
+}
+
+.navbar-blur:before,
+.navbar-blur:after {
+  display: none;
+}
+
+.navbar nav {
+  flex: 1;
+  justify-content: flex-end;
+  gap: 8px;
+  padding: 8px 0;
+  font-family: "TsangerJinKai02", "STKaiti", "KaiTi", "Songti SC", serif;
+  font-size: 16px;
+}
+
+.navbar-container {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  width: min(900px, calc(100% - 40px));
+  margin: 0 auto;
+  overflow: visible;
+}
+
+.site-brand {
+  flex: none;
+  color: #24292f;
+  font-family: "TsangerJinKai02", "STKaiti", "KaiTi", "Songti SC", serif;
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+}
+
+.site-brand:hover {
+  color: #24292f;
+}
+
+.navbar nav a {
+  padding: 7px 12px;
+  border-radius: 6px;
+  color: #6f7479;
+}
+
+.navbar nav a.active,
+.navbar nav a:hover {
+  background: transparent !important;
+  color: #24292f !important;
+  font-weight: 700;
+}
+
+.navbar-container > .search-wrapper {
+  order: 3;
+  flex: none;
+  width: 190px;
+  margin: 0 0 0 12px;
+  padding: 0;
+}
+
+.navbar-container > .search-wrapper .search-form {
+  position: relative;
+  height: 34px;
+  gap: 8px;
+  padding: 0 9px;
+  border: 1px solid #e3e2da;
+  border-radius: 6px;
+  background: #fff;
+}
+
+.navbar-container > .search-wrapper .search-form:before,
+.navbar-container > .search-wrapper .search-form:after {
+  display: none;
+}
+
+.navbar-container > .search-wrapper .search-input {
+  padding: 4px 0;
+  font-size: 13px;
+}
+
+.navbar-container > .search-wrapper #search-result,
+.navbar-container > .search-wrapper .search-no-result {
+  position: absolute;
+  top: 42px;
+  left: 0;
+  z-index: 50;
+  width: 360px;
+  background: #fff;
+  box-shadow: 0 4px 18px rgba(30, 28, 24, 0.12);
+}
+
+.l_main .post-list {
+  width: min(900px, calc(100% - 48px));
+  margin: 0 auto;
+}
+
+.blog-index {
+  width: min(900px, calc(100% - 48px));
+  margin: 0 auto;
+  padding-top: 8px;
+  color: #353a3f;
+}
+
+.blog-filters {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  margin: 0 0 58px;
+}
+
+.blog-filter {
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: #85898c;
+  cursor: pointer;
+  font: inherit;
+  font-size: 22px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+}
+
+.blog-filter:hover,
+.blog-filter.active {
+  color: #292e32;
+}
+
+.blog-filter.active {
+  font-weight: 700;
+}
+
+.blog-group {
+  margin: 0 0 48px;
+}
+
+.blog-group[hidden] {
+  display: none;
+}
+
+.blog-group h2 {
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+  margin: 0 0 22px;
+  color: #353a3f;
+  font-size: 30px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+
+.blog-group h2 span {
+  color: #81868a;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 17px;
+  font-weight: 500;
+  letter-spacing: 0;
+}
+
+.blog-group ul {
+  display: flex;
+  flex-direction: column;
+  gap: 19px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.blog-group li {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: baseline;
+  gap: 24px;
+}
+
+.blog-group li a {
+  color: #353a3f;
+  font-size: 21px;
+  font-weight: 500;
+  line-height: 1.5;
+  text-decoration: none;
+}
+
+.blog-group li a:hover {
+  color: #a16d46;
+}
+
+.blog-group li time {
+  color: #777c80;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 15px;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+}
+
+.blog-empty {
+  margin: -28px 0 48px;
+  color: #777c80;
+  font-size: 17px;
+}
+
+.post-list .post-card-wrap {
+  margin: 0;
+  border-radius: 0;
+  border: 0;
+  box-shadow: none;
+}
+
+.post-list .post-card {
+  overflow: visible;
+  padding: 24px 4px 26px;
+  border-bottom: 1px solid #d9d8d0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  clip-path: none;
+}
+
+.post-list:not(.topic) .post-card.card-hover {
+  box-shadow: none;
+}
+
+.post-list .post-card:hover {
+  background: rgba(255, 255, 255, 0.44);
+}
+
+.post-list .post-card .post-title {
+  margin: 0 0 8px;
+  color: #24292f;
+  font-family: "TsangerJinKai02", "STKaiti", "KaiTi", "Songti SC", serif;
+  font-size: 27px;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+.post-list .post-card .excerpt {
+  margin: 8px 0 14px;
+  color: #4d5358;
+  font-size: 16px;
+  line-height: 1.75;
+}
+
+.post-list .post-card .excerpt > p {
+  margin: 0;
+  color: inherit;
+  line-height: inherit;
+}
+
+.post-list .post-card .meta.cap,
+.post-list .post-card .meta.cap span {
+  color: #777c80;
+  font-size: 14px;
+}
+
+.post-list .post-card .meta.cap svg {
+  opacity: 0.52;
+}
+
+.post-list .post-card:hover .post-title::after {
+  content: none;
+}
+
+.l_main > .entry-content,
+.l_main .article.banner,
+.l_main .post-list,
+.l_main .archive,
+.l_main .widget-wrapper.markdown {
+  border-color: #e3e2da;
+}
+
+.article-banner-wrap {
+  width: min(900px, calc(100% - 48px));
+  margin: 24px auto 0;
+}
+
+.article.banner {
+  min-height: 220px;
+  border-radius: 8px;
+  background-color: #26201a;
+  box-shadow: none;
+}
+
+.article.banner .content .title,
+.article.banner .content h1 {
+  color: #f3ebdb;
+  font-family: "TsangerJinKai02", "STKaiti", "KaiTi", "Songti SC", serif;
+}
+
+.article.banner .content .subtitle,
+.article.banner .content .meta-row,
+.article.banner .content .reading {
+  color: rgba(243, 235, 219, 0.75);
+}
+
+.l_main .post-list .post-card .md-text,
+.l_main .post-list .post-card .excerpt {
+  font-family: "TsangerJinKai02", "STKaiti", "KaiTi", "Songti SC", serif;
+}
+
+.l_main .post-list .post-card .meta.cap {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+.l_main .post-list .post-card .md-text {
+  padding: 0;
+}
+
+.l_main .page-footer {
+  width: min(900px, calc(100% - 48px));
+  margin: 3rem auto;
+  color: #777c80;
+}
+
+.l_main .paginator-wrap {
+  width: min(900px, calc(100% - 48px));
+  margin: 2rem auto;
+}
+
+.aplayer.aplayer-fixed .aplayer-body {
+  border-radius: 8px;
+}

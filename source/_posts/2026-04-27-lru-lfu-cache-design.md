@@ -1,13 +1,12 @@
 ---
 title: "从页面置换策略到 LeetCode：LRU 与 LFU 缓存的设计"
 date: 2026-04-27 00:00:00
+blog_category: tech
 tags:
   - algorithm
   - os
   - cache
   - leetcode
-categories:
-  - 技术
 comment: true
 summary: "从操作系统页面置换切入，系统梳理 LRU 与 LFU 的设计思路与实现细节。"
 ---

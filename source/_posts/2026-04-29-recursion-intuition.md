@@ -1,12 +1,11 @@
 ---
 title: 递归入门：如何理解递归与经典题目解析
 date: 2026-04-29 09:40:00
+blog_category: tech
 tags:
   - algorithm
   - recursion
   - leetcode
-categories:
-  - 技术
 comment: true
 summary: 从二叉树遍历的直觉切入，结合汉诺塔、链表、快速幂等题目理解递归的分析方式、函数设计与递归出口。
 ---

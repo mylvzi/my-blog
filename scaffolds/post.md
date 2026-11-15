@@ -1,7 +1,7 @@
 ---
 title: {{ title }}
 date: {{ date }}
+blog_category: tech
 cover:
-categories: []
 tags: []
 ---

@@ -1,12 +1,11 @@
 ---
 title: 二分查找算法系列-概念讲解-应用场景-大量例题讲解
 date: 2026-03-30 12:00:00
+blog_category: tech
 tags:
   - algorithm
   - leetcode
   - binary-search
-categories:
-  - 技术
 comment: true
 summary: 二分查找的三种固定模板，结合多道题目梳理左右端点查找的使用场景。
 ---
