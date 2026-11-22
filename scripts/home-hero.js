@@ -121,14 +121,14 @@ hexo.extend.filter.register('after_render:html', function(html, data) {
     'about/index.html': ['About', 'A little about the person behind the notes.'],
     'reading/index.html': ['Reading Notes', 'Ideas worth keeping, one page at a time.'],
     'musing/index.html': ['Musings', 'Small thoughts on things that catch my attention.'],
-    'collections/index.html': ['Collections', 'Ideas worth keeping, thoughtfully saved.']
+    'collections/index.html': ['Collections', '']
   };
   const bannerCopy = banners[data.path];
   if (!bannerCopy) return html;
 
   const bannerTitle = escapeHtml(bannerCopy[0]);
   const bannerSubtitle = escapeHtml(bannerCopy[1]);
-  const hero = `<header class="site-hero"><div class="site-hero-inner"><h1>${bannerTitle}</h1><p>${bannerSubtitle}</p></div></header>`;
+  const hero = `<header class="site-hero"><div class="site-hero-inner"><h1>${bannerTitle}</h1>${bannerSubtitle ? `<p>${bannerSubtitle}</p>` : ''}</div></header>`;
   const pageLayoutClass = data.path === 'index.html' ? 'hero-home' : 'hero-interior';
   html = html.replace('<div class="l_main"', `<div class="l_main ${pageLayoutClass}"`);
   let bannerInsertAt = -1;
