@@ -60,6 +60,61 @@ hexo.extend.filter.register('after_render:html', function(html, data) {
 
   if (!data) return html;
 
+  const divEnd = (source, start) => {
+    let depth = 0;
+    const tags = /<div\b[^>]*>|<\/div>/g;
+    tags.lastIndex = start;
+    let match;
+    while ((match = tags.exec(source))) {
+      if (match[0].startsWith('</')) depth -= 1;
+      else depth += 1;
+      if (depth === 0) return tags.lastIndex;
+    }
+    return -1;
+  };
+
+  // Give article pages the same hierarchy as the reference: a quiet site
+  // banner first, then the article title and reading content in a light card.
+  const articleBannerStart = html.indexOf('<div class="article-banner-wrap');
+  const articleMatch = html.match(/<article class="md-text content[^\"]*">/);
+  if (articleBannerStart >= 0 && articleMatch) {
+    const normalizePath = value => String(value || '')
+      .replace(/^\/+/, '')
+      .replace(/index\.html$/, '')
+      .replace(/\/+$/, '');
+    const posts = Array.from(hexo.locals.get('posts').data || []);
+    const post = posts.find(item => normalizePath(item.path) === normalizePath(data.path));
+    const bannerEnd = divEnd(html, articleBannerStart);
+    const articleStart = html.indexOf(articleMatch[0]);
+
+    if (post && bannerEnd > articleBannerStart && articleStart > bannerEnd) {
+      const postTitle = escapeHtml(post.title || '');
+      const date = post.date && post.date.format ? post.date.format('YYYY-MM-DD') : '';
+      const categoryKey = String(post.blog_category || 'tech').toLowerCase();
+      const category = categoryKey === 'life' ? 'Life'
+        : categoryKey === 'thinking' ? 'Thinking' : 'Technical Sharing';
+      const postHero = `<header class="site-hero post-hero"><div class="post-hero-inner"><p>${subtitle}</p></div></header>`;
+      const postHeading = `<div class="post-content-card"><header class="post-heading"><h1>${postTitle}</h1><div class="post-meta"><span>${category}</span><time datetime="${escapeHtml(date)}">${escapeHtml(date)}</time></div></header>`;
+
+      html = html.slice(0, articleBannerStart) + postHero + html.slice(bannerEnd);
+      const shiftedArticleStart = html.indexOf(articleMatch[0], articleBannerStart + postHero.length);
+      html = html.slice(0, shiftedArticleStart) + postHeading + html.slice(shiftedArticleStart);
+
+      const articleEnd = html.indexOf('</article>', shiftedArticleStart + postHeading.length);
+      if (articleEnd >= 0) {
+        let cardEnd = articleEnd + '</article>'.length;
+        const tagsStart = html.indexOf('<div class="article-tags', cardEnd);
+        const footerStart = html.indexOf('<div class="article-footer', cardEnd);
+        if (tagsStart >= 0 && (footerStart < 0 || tagsStart < footerStart)) {
+          const tagsEnd = divEnd(html, tagsStart);
+          if (tagsEnd > tagsStart) cardEnd = tagsEnd;
+        }
+        html = html.slice(0, cardEnd) + '</div>' + html.slice(cardEnd);
+      }
+      return html;
+    }
+  }
+
   const banners = {
     'index.html': [hexo.config.title || "Lvzi's Blog", hexo.config.subtitle || 'Curiosity drives everything.'],
     'about/index.html': ['About', 'A little about the person behind the notes.'],
