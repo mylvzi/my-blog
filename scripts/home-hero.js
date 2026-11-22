@@ -46,7 +46,8 @@ hexo.extend.filter.register('after_render:html', function(html, data) {
       ['Blog', '/'],
       ['About', '/about/'],
       ['Reading Notes', '/reading/'],
-      ['Musings', '/musing/']
+      ['Musings', '/musing/'],
+      ['Collections', '/collections/']
     ].map(([label, href]) => `<a href="${href}">${label}</a>`).join('');
     const topbar = `<div class="navbar top"><div class="navbar-blur"><div class="navbar-container">${brand}${searchMarkup}<nav class="post">${links}</nav></div></div></div>`;
     html = html.replace('<div class="l_main"', `${topbar}<div class="l_main"`);
@@ -119,7 +120,8 @@ hexo.extend.filter.register('after_render:html', function(html, data) {
     'index.html': [hexo.config.title || "Lvzi's Blog", hexo.config.subtitle || 'Curiosity drives everything.'],
     'about/index.html': ['About', 'A little about the person behind the notes.'],
     'reading/index.html': ['Reading Notes', 'Ideas worth keeping, one page at a time.'],
-    'musing/index.html': ['Musings', 'Small thoughts on things that catch my attention.']
+    'musing/index.html': ['Musings', 'Small thoughts on things that catch my attention.'],
+    'collections/index.html': ['Collections', 'Ideas worth keeping, thoughtfully saved.']
   };
   const bannerCopy = banners[data.path];
   if (!bannerCopy) return html;
